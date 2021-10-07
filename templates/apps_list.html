@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if categories %}
+    <h2>Категории:</h2>
+     <ul>
+     {% for category in categories %}
+     <li><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></li>
+     {% endfor %}
+ </ul>
+    {% endif %}
+
+{% if apps_list %}
+ <h2>Приложения:</h2>
+    <ul>
+     {% for app in apps_list %}
+     <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li>
+     {% endfor %}
+ </ul>
+{% else %}
+    <p>Приложений нет</p>
+{% endif %}
+{% endblock %}

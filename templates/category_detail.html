@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ category.name }}</h1>
+Приложения в этой категории:
+
+
+   <ul>
+     {% for app in category.apps.all %}
+     <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li>
+     {% endfor %}
+ </ul>
+{% endblock %}

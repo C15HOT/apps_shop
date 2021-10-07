@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Загрузка программы</h2>
+    <form method="post" action="{% url 'create_app' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ app_form.as_p}}
+        <button type="submit">Добавить</button>
+
+    </form>
+{% endblock %}
