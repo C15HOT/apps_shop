@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название категории')
@@ -25,7 +27,7 @@ class App(models.Model):
     flag = models.BooleanField(choices=ACTIVITY_CHOICES, default=False, verbose_name='Верификация')
     download_count = models.PositiveIntegerField(default=0, verbose_name='Количество скачиваний')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
-
+    comments = GenericRelation('comments')
     # image придется скорее всего переделывать т.к. он хранит только одно изображение,
     # а нам нужно много скриншотов программы
 
@@ -43,10 +45,20 @@ class Profile(models.Model):
 
 
 class Comments(models.Model):
-    user_name = models.CharField(max_length=20, verbose_name='Имя пользователя', default=None, null=True)
     text = models.TextField(verbose_name='Комментарий')
-    app = models.ForeignKey('App', verbose_name='Приложение', default=None, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self',
+                               verbose_name='Родительский комментарий',
+                               blank=True,
+                               null=True,
+                               related_name='comment_children',
+                               on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    timestamp = models.DateTimeField(auto_now=True, verbose_name='Дата создания комментарий')
+
+    def __str__(self):
+        return str(self.id)
 
     def short_text(self):
         if len(self.text) > 15:
