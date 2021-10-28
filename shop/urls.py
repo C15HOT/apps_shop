@@ -22,5 +22,7 @@ urlpatterns = [
     path('apps_list/', AppsListView.as_view(), name='apps_list'),
     path('info/', InformationView.as_view(), name='information'),
     path('about/', AboutView.as_view(), name='about'),
+    path('del_app/<str:slug>/', AppsDelView.as_view(), name='del_app'),
+    path('del_news/<str:slug>/', NewsDelView.as_view(), name='del_news'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

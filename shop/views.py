@@ -110,7 +110,7 @@ class AppsDetailView(generic.DetailView):
 class CreateAppView(View):
 
     def get(self, request):
-        app_form = AppForm
+        app_form = AppForm()
 
         return render(request, 'create_app.html', context={'app_form': app_form})
 
@@ -147,7 +147,7 @@ class NewsAddFormView(View):
         return render(request, 'create_news.html', context={'news_form': news_form})
 
     def post(self, request):
-        news_form = NewsForm(request.POST)
+        news_form = NewsForm(request.POST, request.FILES)
         slug = slugify(request.POST['title'])
         # Нужно добавлять проверку на уникальность или сразу делать уникальным
 
@@ -181,3 +181,17 @@ class InformationView(View):
 class AboutView(View):
     def get(self, request):
         return render(request, 'about.html')
+
+
+class NewsDelView(View):
+    def get(self, request, slug):
+        news = News.objects.get(slug=slug)
+        news.delete()
+        return redirect('main')
+
+
+class AppsDelView(View):
+    def get(self, request, slug):
+        app = App.objects.get(slug=slug)
+        app.delete()
+        return redirect('apps_list')

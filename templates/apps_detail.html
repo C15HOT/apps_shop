@@ -20,6 +20,6 @@
     Файлы:
     <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>
 
-
-
+<br>
+<a href="{% url 'del_app' app.slug %}"><button>Удалить</button></a>
 {% endblock %}

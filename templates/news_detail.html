@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{ news.title }}</h1>
+
+ {% if news.image %}
+    <img width="100" height="100" src="{{MEDIA_URL}}{{news.image.url}}">
+    {% endif %}
+<br>
 Содержание: <p>{{ news.content }}</p>
 Дата создания: <p>{{ news.created_at }}</p>
 Дата обновления: <p>{{ news.update_at }}</p>
 Автор: <p>{{ news.user }}</p>
 
 <a href="{% url 'edit_news' news.slug %}"><button>Редактировать </button></a>
-
+<a href="{% url 'del_news' news.slug %}"><button>Удалить</button></a>
 
 {% endblock %}

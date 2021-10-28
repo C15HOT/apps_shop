@@ -20,7 +20,7 @@ class News(models.Model):
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего редактирования')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
-
+    image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='news_avatars/')
 
     def __str__(self):
         return self.title
@@ -34,7 +34,7 @@ class App(models.Model):
 
     title = models.CharField(max_length=255, verbose_name='Название')
     slug = models.SlugField(unique=True)
-    image = models.ImageField(verbose_name='Заставка', blank=True, upload_to='avatars/')
+    image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='avatars/')
     description = models.TextField(verbose_name='Описание')
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='apps')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата загрузка')

@@ -34,7 +34,7 @@ class ProfileForm(forms.ModelForm):
 class NewsForm(forms.ModelForm):
     class Meta:
         model = News
-        fields = ('title', 'content')
+        fields = ('title', 'content', 'image')
 
 class AppForm(forms.ModelForm):
     class Meta:
