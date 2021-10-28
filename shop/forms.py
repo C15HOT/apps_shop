@@ -3,9 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
 
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
+# class UploadFileForm(forms.Form):
+#     title = forms.CharField(max_length=50)
+#     file = forms.FileField()
 
 
 class RegisterForm(UserCreationForm):
@@ -30,6 +30,11 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = '__all__'
 
+
+class NewsForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = ('title', 'content')
 
 class AppForm(forms.ModelForm):
     class Meta:

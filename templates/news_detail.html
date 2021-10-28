@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ news.title }}</h1>
+Содержание: <p>{{ news.content }}</p>
+Дата создания: <p>{{ news.created_at }}</p>
+Дата обновления: <p>{{ news.update_at }}</p>
+Автор: <p>{{ news.user }}</p>
+
+<a href="{% url 'edit_news' news.slug %}"><button>Редактировать </button></a>
+
+
+{% endblock %}

@@ -48,6 +48,7 @@ def create_child_comment(request):
      comments_list = create_comments_tree(comments)
      return render(request, 'comments.html', {'comments': comments_list})
 
+
 class AppsListView(generic.ListView):
     model = App
     template_name = 'apps_list.html'
@@ -125,3 +126,58 @@ class CreateAppView(View):
             return HttpResponseRedirect('/')
         return render(request, 'create_app.html', context={'app_form': app_form})
 
+
+class NewsListView(generic.ListView):
+    model = News
+    template_name = 'news_list.html'
+    context_object_name = 'news_list'
+    queryset = News.objects.all()
+
+
+class NewsDetailView(generic.DetailView):
+    model = News
+    template_name = 'news_detail.html'
+    context_object_name = 'news'
+
+
+class NewsAddFormView(View):
+
+    def get(self, request):
+        news_form = NewsForm()
+        return render(request, 'create_news.html', context={'news_form': news_form})
+
+    def post(self, request):
+        news_form = NewsForm(request.POST)
+        slug = slugify(request.POST['title'])
+        # Нужно добавлять проверку на уникальность или сразу делать уникальным
+
+        if news_form.is_valid():
+            News.objects.create(**news_form.cleaned_data, slug=slug, user_id=request.user.id)
+            return HttpResponseRedirect('/')
+        return render(request, 'create_news.html', context={'news_form': news_form})
+
+
+class NewsEditFormView(View):
+
+    def get(self, request, slug):
+        news = News.objects.get(slug=slug)
+        news_form = NewsForm(instance=news)
+        return render(request, 'edit_news.html', context={'news_form': news_form, 'slug': slug})
+
+    def post(self, request, slug):
+        news = News.objects.get(slug=slug)
+        news_form = NewsForm(request.POST, instance=news)
+        if news_form.is_valid():
+            news.save()
+            return redirect('news_detail', slug=slug)
+        return render(request, 'edit_news.html', context={'news_form': news_form, 'slug': slug})
+
+
+class InformationView(View):
+    def get(self, request):
+        return render(request, 'information.html')
+
+
+class AboutView(View):
+    def get(self, request):
+        return render(request, 'about.html')

@@ -3,12 +3,27 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 
+
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название категории')
     slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.name
+
+
+class News(models.Model):
+
+    title = models.CharField(max_length=20, verbose_name='Заголовок')
+    content = models.TextField(verbose_name='Содержание')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата создания')
+    update_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего редактирования')
+    user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True)
+
+
+    def __str__(self):
+        return self.title
 
 
 class App(models.Model):
@@ -38,6 +53,7 @@ class App(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profiles', on_delete=models.CASCADE, verbose_name='Пользователь')
+    email = models.EmailField(max_length=50, default=None)
     information = models.TextField(blank=True, verbose_name='О себе')
     city = models.CharField(max_length=30, blank=True, verbose_name='Город')
     phone = models.CharField(max_length=20, blank=True, verbose_name='Телефон')

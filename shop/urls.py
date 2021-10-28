@@ -5,7 +5,7 @@ from .views import *
 
 
 urlpatterns = [
-    path('', AppsListView.as_view(), name='main'),
+    path('', NewsListView.as_view(), name='main'),
     path('login/', AppsLoginView.as_view(), name='login'),
     path('logout/', AppsLogoutView.as_view(), name='logout'),
     path('register/', register_view, name='register'),
@@ -14,6 +14,13 @@ urlpatterns = [
     path('category/<str:slug>', CategoryDetailView.as_view(), name='category_detail'),
     path('comments/', comments_view, name='comments'),
     path('create-comments/', create_comment, name='comment_create'),
-    path('create-child-comment/', create_child_comment, name='comment_child_create')
+    path('create-child-comment/', create_child_comment, name='comment_child_create'),
+    path('apps/', AppsListView.as_view(), name='apps'),
+    path('create_news/', NewsAddFormView.as_view(), name='create_news'),
+    path('news_detail/<str:slug>', NewsDetailView.as_view(), name='news_detail'),
+    path('edit_news/<str:slug>', NewsEditFormView.as_view(), name='edit_news'),
+    path('apps_list/', AppsListView.as_view(), name='apps_list'),
+    path('info/', InformationView.as_view(), name='information'),
+    path('about/', AboutView.as_view(), name='about'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
