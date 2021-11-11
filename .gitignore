@@ -1,0 +1,6 @@
+*.bat
+apps_shop/__pycache__/
+shop/__pycache__/
+shop/migrations/__pycache__/
+shop/templatetags/__pycache__/
+db.sqlite3
