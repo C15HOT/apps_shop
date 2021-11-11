@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <!-- BEGIN CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- END CSS -->
     <!-- ! попытка подключения jquery 3.3.1.min -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <!-- TODO Внешняя зависимость -->
     <script
   src="https://code.jquery.com/jquery-3.6.0.js"
@@ -119,5 +121,6 @@
 
     })
 </script>
-<script src="js/Menu.js"></script>
+{% load static %}
+<script src="{% static 'js/Menu.js' %}"></script>
 </html>
