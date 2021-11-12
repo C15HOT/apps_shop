@@ -1,6 +1,6 @@
 .body{
 	font-family: sans-serif;
-	background-color: #363636;
+	background-color: #2d303d;
 	background-position:left 0px top 0px;
 	background-repeat: no-repeat;
 	color: azure;
@@ -172,9 +172,13 @@ border-bottom-right-radius: 50px;
 
 .footer{
 	padding: 20px;
-	background-color: aquamarine;
+	background-color: #040506;
 }
 
 .footer{
 	margin-top: auto;
+}
+
+.text-footer {
+	color: #f4cb67;
 }
