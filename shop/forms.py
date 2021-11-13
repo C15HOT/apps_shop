@@ -15,10 +15,11 @@ class RegisterForm(UserCreationForm):
     phone = forms.CharField(max_length=30, required=False, help_text='Телефон')
     information = forms.CharField(help_text='О себе', required=False)
     avatar = forms.ImageField(required=False, help_text='Аватар')
+    email = forms.EmailField(max_length=50, required=True, help_text='Email')
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'password1', 'password2')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
 class CommentsForm(forms.ModelForm):
     class Meta:

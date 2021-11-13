@@ -53,7 +53,7 @@ class App(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profiles', on_delete=models.CASCADE, verbose_name='Пользователь')
-    email = models.EmailField(max_length=50, default=None)
+    email = models.EmailField(max_length=50, default=None, null=True,  verbose_name='email')
     information = models.TextField(blank=True, verbose_name='О себе')
     city = models.CharField(max_length=30, blank=True, verbose_name='Город')
     phone = models.CharField(max_length=20, blank=True, verbose_name='Телефон')
