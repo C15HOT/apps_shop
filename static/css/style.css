@@ -1,9 +1,9 @@
 .body{
 	font-family: sans-serif;
-	background-color: #2d303d;
+	background-color: #232531;
 	background-position:left 0px top 0px;
 	background-repeat: no-repeat;
-	color: azure;
+	color: #cfcfd1;
 }
 .wrap{
 	position: absolute;
@@ -172,13 +172,27 @@ border-bottom-right-radius: 50px;
 
 .footer{
 	padding: 20px;
-	background-color: #040506;
+	background-color: #1b1b24;
 }
 
 .footer{
 	margin-top: auto;
 }
-
 .text-footer {
+	font-size: 16px;
+	color: #818186;
+}
+.yellow {
 	color: #f4cb67;
+}
+
+.copyright {
+	border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.pt-5 {
+	padding-top: 3erm!important;
+}
+.text-center {
+	text-align: center !important;
 }
