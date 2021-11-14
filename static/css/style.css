@@ -72,7 +72,8 @@
 		transform: translateY(0);
 	}
 }
-
+/* Content
+===================================== */
 .page{
 	overflow: hidden;
 	display: flex;
@@ -85,7 +86,24 @@
 	margin: 0 auto;
 	padding: 40px 20px;
 }
-
+.list_news{
+	/* max-width: 1100px; */
+	font-family: sans-serif;
+	/* padding отодвигает от левого края на 500px */
+	padding: 0px 500px;
+	font-size: 13px;
+	color: #cfcfd1;
+}
+.list_news__link{
+	font-size: 20px;
+	color: #cfcfd1;
+}
+.list_news__link:hover {
+	text-decoration: none;
+	color: #fff;
+}
+/* Footer
+======================================= */
 .footer{
 	padding: 20px;
 	background-color: #1b1b24;
@@ -97,9 +115,6 @@
 .text-footer {
 	font-size: 16px;
 	color: #818186;
-}
-.yellow {
-	color: #f4cb67;
 }
 
 .copyright {
