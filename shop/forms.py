@@ -9,13 +9,13 @@ from .models import *
 
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text='Имя')
-    last_name = forms.CharField(max_length=30, required=False, help_text='Фамилия')
-    city = forms.CharField(max_length=36, required=False, help_text='Город')
-    phone = forms.CharField(max_length=30, required=False, help_text='Телефон')
-    information = forms.CharField(help_text='О себе', required=False)
-    avatar = forms.ImageField(required=False, help_text='Аватар')
-    email = forms.EmailField(max_length=50, required=True, help_text='Email')
+    first_name = forms.CharField(max_length=30, label='Имя', required=False)
+    last_name = forms.CharField(max_length=30, label='Фамилия', required=False)
+    city = forms.CharField(max_length=36, required=False, label='Город')
+    phone = forms.CharField(max_length=30, required=False, label='Телефон')
+    information = forms.CharField(label='О себе', required=False)
+    avatar = forms.ImageField(required=False, label='Фото профиля')
+    email = forms.EmailField(max_length=50, required=True, label='Email')
 
     class Meta:
         model = User
