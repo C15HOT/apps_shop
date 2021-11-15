@@ -2,12 +2,26 @@
 {% block content %}
 
 {% if news_list %}
-
-     <ul>
+<!-- TODO 
+TODO    1) Разделить новости полосой
+TODO    2) Изменить порядок новостей (проследняя вверху)
+TODO    3) Добавить кнопку перехода к новости
+TODO -->
+     <!-- <ul> -->
      {% for news in news_list %}
-     <li><a href="{% url 'news_detail' news.slug %}">{{ news.title }}</a></li>
+     <div class="list_news">
+        
+        <a class="list_news__link" href="{% url 'news_detail' news.slug %}">{{ news.title }}</a>
+        
+        <p>
+            <img width="50" height="50" src="{{MEDIA_URL}}{{news.image.url}}">
+            Дата создания: {{ news.created_at }}
+            Автор: {{ news.user }}
+        </p>
+     </div>
+     <!-- <li><a href="{% url 'news_detail' news.slug %}">{{ news.title }}</a></li> -->
      {% endfor %}
-     </ul>
+     <!-- </ul> -->
     {% else %}
     Новостей нет
 {% endif %}
