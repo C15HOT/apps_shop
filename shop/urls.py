@@ -24,5 +24,10 @@ urlpatterns = [
     path('about/', AboutView.as_view(), name='about'),
     path('del_app/<str:slug>/', AppsDelView.as_view(), name='del_app'),
     path('del_news/<str:slug>/', NewsDelView.as_view(), name='del_news'),
+    path('profiles/', ProfileListView.as_view(), name='profiles'),
+    path('profiles_detail/<str:slug>', ProfileDetailView.as_view(), name='profile_detail'),
+    path('edit_profiles/<str:slug>', ProfileEditFormView.as_view(), name='edit_profile'),
+    path('edit_app/<str:slug>', AppEditFormView.as_view(), name='edit_app'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

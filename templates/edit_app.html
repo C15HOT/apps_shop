@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+ <h2>Редактирование программы</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'edit_app' slug %}">
+        {% csrf_token %}
+        {{ app_form.as_p }}
+    <button>Сохранить</button></form>
+</body>
+{% endblock %}

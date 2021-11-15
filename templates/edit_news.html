@@ -2,7 +2,7 @@
 {% block content %}
 <body>
  <h2>Редактирование новости</h2>
-    <form method="post" action="{% url 'edit_news' slug %}">
+    <form method="post" enctype="multipart/form-data" action="{% url 'edit_news' slug %}">
         {% csrf_token %}
         {{ news_form.as_p }}
     <button>Сохранить</button></form>

@@ -21,5 +21,11 @@
     <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>
 
 <br>
-<a href="{% url 'del_app' app.slug %}"><button>Удалить</button></a>
+{% if request.user.is_superuser or request.user == app.user %}
+    <a href="{% url 'edit_app' app.slug %}"><button>Редактировать</button></a>
+
+    <a href="{% url 'del_app' app.slug %}"><button>Удалить</button></a>
+    {% endif %}
+
+
 {% endblock %}

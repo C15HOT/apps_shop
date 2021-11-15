@@ -14,13 +14,16 @@ class Category(models.Model):
 
 class News(models.Model):
 
-    title = models.CharField(max_length=20, verbose_name='Заголовок')
+    title = models.CharField(max_length=50, verbose_name='Заголовок')
     content = models.TextField(verbose_name='Содержание')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата создания')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего редактирования')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
     image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='news_avatars/')
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.title
@@ -57,7 +60,12 @@ class Profile(models.Model):
     information = models.TextField(blank=True, verbose_name='О себе')
     city = models.CharField(max_length=30, blank=True, verbose_name='Город')
     phone = models.CharField(max_length=20, blank=True, verbose_name='Телефон')
-    avatar = models.ImageField(blank=True, verbose_name='Аватар', upload_to='user_avatars/')
+    avatar = models.ImageField(blank=True, verbose_name='Аватар', default='star.png', upload_to='user_avatars/')
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 
 class Comments(models.Model):

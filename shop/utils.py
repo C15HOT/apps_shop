@@ -31,3 +31,4 @@ def create_comments_tree(qs):
         if not comment.is_child:
             res.append(c)
     return res
+

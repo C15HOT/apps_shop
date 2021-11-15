@@ -77,19 +77,37 @@ class AppsLoginView(LoginView):
 class AppsLogoutView(LogoutView):
     next_page = '/'
 
-
+@transaction.atomic()
 def register_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             phone = form.cleaned_data.get('phone')
             city = form.cleaned_data.get('city')
-            Profile.objects.create(
-                user=user,
-                city=city,
-                phone=phone,
-            )
+            email = form.cleaned_data.get('email')
+            information = form.cleaned_data.get('information')
+            avatar = form.cleaned_data.get('avatar')
+            if avatar:
+                Profile.objects.create(
+                    user=user,
+                    city=city,
+                    phone=phone,
+                    slug=user.username,
+                    avatar=avatar,
+                    information=information,
+                    email=email,
+                )
+            else:
+                Profile.objects.create(
+                    user=user,
+                    city=city,
+                    phone=phone,
+                    slug=user.username,
+
+                    information=information,
+                    email=email,
+                )
 
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
@@ -106,6 +124,21 @@ class AppsDetailView(generic.DetailView):
     context_object_name = 'app'
     template_name = 'apps_detail.html'
 
+class AppEditFormView(View):
+
+    def get(self, request, slug):
+        app = App.objects.get(slug=slug)
+        app_form = AppForm(instance=app)
+        return render(request, 'edit_app.html', context={'app_form': app_form, 'slug': slug})
+
+    def post(self, request, slug):
+        app = App.objects.get(slug=slug)
+        app_form = AppForm(request.POST, request.FILES, instance=app)
+        if app_form.is_valid():
+            app.save()
+            return redirect('app_detail', slug=slug)
+        return render(request, 'edit_app.html', context={'app_form': app_form, 'slug': slug})
+
 
 class CreateAppView(View):
 
@@ -117,7 +150,7 @@ class CreateAppView(View):
     def post(self, request):
         app_form = AppForm(request.POST, request.FILES)
 
-        slug = slugify(request.POST['title'])
+        slug = slugify(request.POST['title']+'_абс')
         # Нужно добавлять проверку на уникальность или сразу делать уникальным
         if app_form.is_valid():
             App.objects.create(**app_form.cleaned_data, slug=slug, user_id=request.user.id)
@@ -148,7 +181,10 @@ class NewsAddFormView(View):
 
     def post(self, request):
         news_form = NewsForm(request.POST, request.FILES)
-        slug = slugify(request.POST['title'])
+        print(request.POST['title'])
+        slug = slugify(request.POST['title']+'_абс')
+        print(slug)
+
         # Нужно добавлять проверку на уникальность или сразу делать уникальным
 
         if news_form.is_valid():
@@ -166,11 +202,41 @@ class NewsEditFormView(View):
 
     def post(self, request, slug):
         news = News.objects.get(slug=slug)
-        news_form = NewsForm(request.POST, instance=news)
+        news_form = NewsForm(request.POST, request.FILES,  instance=news)
         if news_form.is_valid():
             news.save()
             return redirect('news_detail', slug=slug)
         return render(request, 'edit_news.html', context={'news_form': news_form, 'slug': slug})
+
+
+class ProfileListView(generic.ListView):
+    model = Profile
+    template_name = 'profile_list.html'
+    context_object_name = 'profile_list'
+    queryset = Profile.objects.all()
+
+
+class ProfileDetailView(generic.DetailView):
+    model = Profile
+    template_name = 'profile_detail.html'
+    context_object_name = 'profile'
+
+
+class ProfileEditFormView(View):
+
+    def get(self, request, slug):
+        profile = Profile.objects.get(slug=slug)
+        profile_form = ProfileForm(instance=profile)
+        return render(request, 'edit_profile.html', context={'profile_form': profile_form, 'slug': slug})
+
+    def post(self, request, slug):
+        profile = Profile.objects.get(slug=slug)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if profile_form.is_valid():
+            profile.save()
+            return redirect('profile_detail', slug=slug)
+        return render(request, 'edit_profile.html', context={'profile_form': profile_form, 'slug': slug})
+
 
 
 class InformationView(View):
