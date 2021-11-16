@@ -124,40 +124,65 @@ class AppsDetailView(generic.DetailView):
     context_object_name = 'app'
     template_name = 'apps_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(AppsDetailView, self).get_context_data(**kwargs)
+
+        context['files'] = self.object.screenshots.all()
+
+        return context
+
 class AppEditFormView(View):
 
     def get(self, request, slug):
         app = App.objects.get(slug=slug)
         app_form = AppForm(instance=app)
-        return render(request, 'edit_app.html', context={'app_form': app_form, 'slug': slug})
+        screens = app.screenshots.all()
+
+        screenshots_form = ScreenshotsForm()
+        return render(request, 'edit_app.html', context={'app_form': app_form, 'slug': slug, 'screenshots': screens,
+                                                         'screenshots_form': screenshots_form})
 
     def post(self, request, slug):
         app = App.objects.get(slug=slug)
         app_form = AppForm(request.POST, request.FILES, instance=app)
-        if app_form.is_valid():
+        screenshots_form = ScreenshotsForm(request.POST, request.FILES)
+        files = request.FILES.getlist('files')
+        if app_form.is_valid() and screenshots_form.is_valid():
             app.save()
+            for f in files:
+                instance = ScreenshotsApp(files=f, app=app)
+                instance.save()
             return redirect('app_detail', slug=slug)
-        return render(request, 'edit_app.html', context={'app_form': app_form, 'slug': slug})
+        return render(request, 'edit_app.html', context={'app_form': app_form, 'slug': slug,
+                                                         'screenshots_form':screenshots_form})
 
 
 class CreateAppView(View):
 
     def get(self, request):
         app_form = AppForm()
+        screenshots_form = ScreenshotsForm()
 
-        return render(request, 'create_app.html', context={'app_form': app_form})
+        return render(request, 'create_app.html', context={'app_form': app_form, 'screenshots_form':screenshots_form})
 
+    @transaction.atomic()
     def post(self, request):
-        app_form = AppForm(request.POST, request.FILES)
 
+        app_form = AppForm(request.POST, request.FILES)
+        screenshots_form = ScreenshotsForm(request.POST, request.FILES)
+
+        files = request.FILES.getlist('files')
         slug = slugify(request.POST['title']+'_абс')
         # Нужно добавлять проверку на уникальность или сразу делать уникальным
-        if app_form.is_valid():
-            App.objects.create(**app_form.cleaned_data, slug=slug, user_id=request.user.id)
+        if app_form.is_valid() and screenshots_form.is_valid():
+            app = App.objects.create(**app_form.cleaned_data, slug=slug, user_id=request.user.id)
 
+            for f in files:
+                instance = ScreenshotsApp(files=f, app=app)
+                instance.save()
 
             return HttpResponseRedirect('/')
-        return render(request, 'create_app.html', context={'app_form': app_form})
+        return render(request, 'create_app.html', context={'app_form': app_form, 'screenshots_form':screenshots_form})
 
 
 class NewsListView(generic.ListView):

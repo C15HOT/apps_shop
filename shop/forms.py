@@ -56,3 +56,7 @@ class CommentForm(forms.ModelForm):
         fields = [
             'text'
         ]
+
+
+class ScreenshotsForm(forms.Form):
+    files = forms.FileField(label='Скриншоты программы', required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
