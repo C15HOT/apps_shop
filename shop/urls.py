@@ -6,7 +6,7 @@ from .views import *
 
 urlpatterns = [
     path('', NewsListView.as_view(), name='main'),
-    path('login/', AppsLoginView.as_view(), name='login'),
+    path('login/', login_view, name='login'),
     path('logout/', AppsLogoutView.as_view(), name='logout'),
     path('register/', register_view, name='register'),
     path('app_detail/<str:slug>', AppsDetailView.as_view(), name='app_detail'),
