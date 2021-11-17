@@ -1,23 +1,21 @@
-{% extends 'base.html' %}
-{% block content %}
-<!-- TODO 
-TODO 1) Перерисовать форму с новым дизайном
-TODO 2) 
-
--->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Логин</title>
-</head>
-<body>
-<h2>Страница входа</h2>
-<form method="post" autocomplete="off">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Вход</button>
-</form>
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Вход</title>
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login_page_style.css' %}">
+    </head>
+    <body>
+                    
+            <form class="box" method="post" autocomplete="off">
+                <a href="{% url 'main' %}"><img src="{% static 'image/star.png' %}" alt="" style="width: 50px;"></a>
+                <h2>Вход</h2>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="submit" type="submit">Вход</button>
+            </form>
+        
+        </div>  
+    </body>
 </html>
-{% endblock %}py
