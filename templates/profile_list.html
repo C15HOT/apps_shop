@@ -4,14 +4,9 @@
 {% if profile_list %}
 
      {% for profile in profile_list %}
-     <div class="list_news">
-
-
+     
         <a class="list_news__link" href="{% url 'profile_detail' profile.slug %}">{{ profile.user.username }}</a>
-        
-
-     </div>
-
+     
      {% endfor %}
 
 {% endif %}
