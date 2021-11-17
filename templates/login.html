@@ -13,7 +13,7 @@ TODO 2)
 </head>
 <body>
 <h2>Страница входа</h2>
-<form method="post">
+<form method="post" autocomplete="off">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Вход</button>

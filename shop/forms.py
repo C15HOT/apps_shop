@@ -3,14 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
 
-# class UploadFileForm(forms.Form):
-#     title = forms.CharField(max_length=50)
-#     file = forms.FileField()
-
 
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, label='Имя', required=False)
-    last_name = forms.CharField(max_length=30, label='Фамилия', required=False)
+    last_name = forms.CharField(max_length=30, label='Фамилия', required=False )
     city = forms.CharField(max_length=36, required=False, label='Город')
     phone = forms.CharField(max_length=30, required=False, label='Телефон')
     information = forms.CharField(label='О себе', required=False)
@@ -60,3 +56,9 @@ class CommentForm(forms.ModelForm):
 
 class ScreenshotsForm(forms.Form):
     files = forms.FileField(label='Скриншоты программы', required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'autocomplete':'off'}))
+    password = forms.CharField(widget=forms.PasswordInput)
