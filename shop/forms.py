@@ -58,7 +58,3 @@ class ScreenshotsForm(forms.Form):
     files = forms.FileField(label='Скриншоты программы', required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
 
-
-class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={'autocomplete':'off'}))
-    password = forms.CharField(widget=forms.PasswordInput)

@@ -290,29 +290,3 @@ class AppsDelView(View):
 
 
 
-def login_view(request):
-    if request.method == 'POST':
-        auth_form = LoginForm(request.POST)
-        if auth_form.is_valid():
-            username = auth_form.cleaned_data['username']
-            password = auth_form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponseRedirect('/')
-                else:
-                    auth_form.add_error('__all__', 'Ошибка! Учетная запись пользователя не активна')
-            else:
-                auth_form.add_error('__all__', 'Ошибка! Проверьте правильность ввода логина и пароля')
-
-
-
-    else:
-        auth_form = LoginForm()
-
-
-    context = {
-        'form': auth_form
-    }
-    return render(request, 'login.html', context=context)
