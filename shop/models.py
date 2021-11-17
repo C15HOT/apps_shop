@@ -46,12 +46,16 @@ class App(models.Model):
     download_count = models.PositiveIntegerField(default=0, verbose_name='Количество скачиваний')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     comments = GenericRelation('comments')
-    # image придется скорее всего переделывать т.к. он хранит только одно изображение,
-    # а нам нужно много скриншотов программы
+
+
 
     def __str__(self):
         return self.title
 
+class ScreenshotsApp(models.Model):
+    files = models.FileField(upload_to='files/', blank=True, verbose_name='Файлы')
+    app = models.ForeignKey('App', related_name='screenshots', verbose_name='Скриншоты', on_delete=models.CASCADE,
+                            default=None, null=True)
 
 
 class Profile(models.Model):
