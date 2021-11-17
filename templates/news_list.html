@@ -3,22 +3,30 @@
 
 {% if news_list %}
 <!-- TODO 
-TODO    1) Разделить новости полосой
-TODO    2) Изменить порядок новостей (проследняя вверху)
-TODO    3) Добавить кнопку перехода к новости
+
 TODO -->
      <!-- <ul> -->
      {% for news in news_list %}
-     <div class="list_news">
+     
+        <div class="post">
+            <h1>{{ news.title }}</h1>
+            <span>Дата создания: {{ news.created_at }}</span>
+            <span>Автор: {{ news.user }}</span>
+            <!-- <button class="read"><a class="list_news__link" href="{% url 'news_detail' news.slug %}">Читать</a></button> -->
+            <p>
+                <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
+            </p>
+        </div>
         
-        <a class="list_news__link" href="{% url 'news_detail' news.slug %}">{{ news.title }}</a>
+
+        <!-- <a class="list_news__link" href="{% url 'news_detail' news.slug %}">{{ news.title }}</a>
         
         <p>
             <img width="50" height="50" src="{{MEDIA_URL}}{{news.image.url}}">
             Дата создания: {{ news.created_at }}
             Автор: {{ news.user }}
-        </p>
-     </div>
+        </p> -->
+     
      <!-- <li><a href="{% url 'news_detail' news.slug %}">{{ news.title }}</a></li> -->
      {% endfor %}
      <!-- </ul> -->
