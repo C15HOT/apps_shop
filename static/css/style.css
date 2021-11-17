@@ -24,6 +24,7 @@
 .header {
 	background-color: #1b1b24;
 	text-transform: uppercase;
+	box-shadow: 0 0 5px 0px black;
 }
 
 .header__inner {
@@ -184,6 +185,7 @@
 	text-transform: capitalize;
 	cursor: pointer;
 	font-size: 20px;
+	
 
 }
 
@@ -207,6 +209,7 @@
 .footer{
 	padding: 20px;
 	background-color: #1b1b24;
+	box-shadow: 0 0 5px 0px black;
 }
 
 .footer{
