@@ -78,9 +78,16 @@ class AppsLoginView(LoginView):
 class AppsLogoutView(LogoutView):
     next_page = '/'
 
-@transaction.atomic()
-def register_view(request):
-    if request.method == 'POST':
+
+class RegisterView(View):
+
+    def get(self, request):
+        form = RegisterForm()
+        return render(request, 'register.html', {'form': form})
+
+    @transaction.atomic()
+    def post(self, request):
+
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
@@ -115,9 +122,8 @@ def register_view(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('/')
-    else:
-        form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+
+        return render(request, 'register.html', {'form': form})
 
 
 class AppsDetailView(generic.DetailView):
