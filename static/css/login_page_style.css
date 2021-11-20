@@ -5,6 +5,14 @@ body{
     background: #232531;
 }
 
+li {
+   
+    color: brown;
+    display: inherit;
+    
+    width: 220px;
+}
+
 .box {
 
     width: 300px;
@@ -53,6 +61,8 @@ body{
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .submit:hover{
@@ -66,3 +76,4 @@ p {
     width: 280px;
     border-color: #2ecc71;
 }
+
