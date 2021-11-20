@@ -196,13 +196,14 @@ class NewsListView(generic.ListView):
     model = News
     template_name = 'news_list.html'
     context_object_name = 'news_list'
-    queryset = News.objects.all()
+    queryset = News.objects.select_related('user__profiles').all()
 
 
 class NewsDetailView(generic.DetailView):
     model = News
     template_name = 'news_detail.html'
     context_object_name = 'news'
+    queryset = News.objects.select_related('user__profiles').all()
 
 
 class NewsAddFormView(View):
@@ -245,13 +246,14 @@ class ProfileListView(generic.ListView):
     model = Profile
     template_name = 'profile_list.html'
     context_object_name = 'profile_list'
-    queryset = Profile.objects.all()
+    queryset = Profile.objects.select_related('user').all()
 
 
 class ProfileDetailView(generic.DetailView):
     model = Profile
     template_name = 'profile_detail.html'
     context_object_name = 'profile'
+    queryset = Profile.objects.select_related('user').all()
 
 
 class ProfileEditFormView(View):
