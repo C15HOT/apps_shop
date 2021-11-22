@@ -14,13 +14,17 @@ class Category(models.Model):
 
 class News(models.Model):
 
-    title = models.CharField(max_length=20, verbose_name='Заголовок')
+    title = models.CharField(max_length=50, verbose_name='Заголовок')
     content = models.TextField(verbose_name='Содержание')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата создания')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего редактирования')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
     image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='news_avatars/')
+    annotation = models.TextField(max_length=300, verbose_name='Аннотация', default='', null=True)
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.title
@@ -43,21 +47,31 @@ class App(models.Model):
     download_count = models.PositiveIntegerField(default=0, verbose_name='Количество скачиваний')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     comments = GenericRelation('comments')
-    # image придется скорее всего переделывать т.к. он хранит только одно изображение,
-    # а нам нужно много скриншотов программы
+
+
 
     def __str__(self):
         return self.title
 
+class ScreenshotsApp(models.Model):
+    files = models.FileField(upload_to='files/', blank=True, verbose_name='Файлы')
+    app = models.ForeignKey('App', related_name='screenshots', verbose_name='Скриншоты', on_delete=models.CASCADE,
+                            default=None, null=True)
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profiles', on_delete=models.CASCADE, verbose_name='Пользователь')
-    email = models.EmailField(max_length=50, default=None)
+    email = models.EmailField(max_length=50, default=None, null=True,  verbose_name='email')
     information = models.TextField(blank=True, verbose_name='О себе')
     city = models.CharField(max_length=30, blank=True, verbose_name='Город')
     phone = models.CharField(max_length=20, blank=True, verbose_name='Телефон')
-    avatar = models.ImageField(blank=True, verbose_name='Аватар', upload_to='user_avatars/')
+    avatar = models.ImageField(blank=True, verbose_name='Аватар', default='star.png', upload_to='user_avatars/')
+    slug = models.SlugField(unique=True)
+    position = models.CharField(max_length=100, default='', null=True, verbose_name='Должность')
+
+    def __str__(self):
+        return self.user.username
+
 
 
 class Comments(models.Model):

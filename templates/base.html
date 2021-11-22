@@ -11,8 +11,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
-
     <title>Магазин приложений</title>
 </head>
 <body class="body">
@@ -21,15 +19,20 @@
        <div class="container">
            <div class="header__inner">
                <div class="header__logo">
-                   <img src="{% static 'image/star.png' %}" alt="" style="width: 30px;"> Союз программистов
+                    <div >
+                        <img src="{% static 'image/star.png' %}" alt="" style="width: 35px;"> 
+                    <b>Союз программистов </b>                  
+                    </div>
                </div>
                <nav class="nav">
-                    <a href="{% url 'main' %}" class="nav__link">Главная</a>
-                    <a href="{% url 'apps_list' %}" class="nav__link">Программы</a>
-                    <a href="{% url 'information' %}" class="nav__link">Информация</a>
-                    <a href="{% url 'information' %}" class="nav__link">О нас</a>
+                    <a class="nav__link" href="{% url 'main' %}">Главная</a>
+                    <a class="nav__link" href="{% url 'apps_list' %}">Программы</a>
+                    <a class="nav__link" href="{% url 'information' %}">Информация</a>
+                    <a class="nav__link" href="{% url 'about' %}">О нас</a>
+                    
                    {% if request.user.is_authenticated %}
-                        <a href="{% url 'create_app' %}" class="nav__link">Загрузить программу</a>
+                        <a class="nav__link" href="{% url 'profiles' %}">Пользователи</a>
+                        <a href="{% url 'create_app' %}" class="nav__link">Загрузить ПО</a>
                         <a href="{% url 'create_news' %}" class="nav__link">Создать новость</a>
                         <a href="{% url 'logout' %}" class="nav__link">Выйти</a>
                    {% else %}
@@ -43,45 +46,22 @@
        </div>
    </header>
     <!-- end new header -->
-<!-- Begin menu -->
-    <!-- <div class="wrap">
-        <div class="section">
-            <div class="menu-block">
-                <a href="#" class="menu-btn"><span></span></a>
-                <nav class="menu-nav">
-                    <a href="{% url 'main' %}" class="menu-nav__link">Главная</a>
-                    {% if request.user.is_authenticated %}
-                        <a href="{% url 'create_news' %}" class="menu-nav__link">Создать новость</a>
-                        <a href="{% url 'create_app' %}" class="menu-nav__link">Загрузить программу</a>
-                        <a href="{% url 'logout' %}" class="menu-nav__link">Выйти</a>
-                    {% else %}
-                        <a href="{% url 'login' %}" class="menu-nav__link">Войти</a>
-                        <a href="{% url 'register' %}" class="menu-nav__link">Зарегистрироваться</a>
-                    {% endif %}
-                    <a href="{% url 'apps_list' %}" class="menu-nav__link">Программы</a>
-                    <a href="{% url 'information' %}" class="menu-nav__link">Информация</a>
-                    <a href="{% url 'information' %}" class="menu-nav__link">О нас</a>
-                </nav>
-            </div>
-        </div>
-    </div> -->
-<!-- End menu -->
 
- <div class="infocontent">
-    {% if request.user.is_authenticated %}
-    {% else %}
-    <h3>Вы не авторизованы на сайте</h3>
-    <p>Еще нет аккаунта? Создайте его</p>
-    {% endif %}
-</div>
 
-<div class="page">
-    <div class="content">
+    <div class="list_news">
+        
+        {% if request.user.is_authenticated %}
+        {% else %}
+        <h3 style="color: brown;">Вы не авторизованы на сайте</h3>
+        <p>Еще нет аккаунта? Создайте его</p>
+        {% endif %} 
+           
         {% block content %}
         {% endblock %}
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo quisquam laudantium minus autem ducimus incidunt reiciendis cum eum voluptas numquam corrupti omnis, eaque placeat dolores ut? Repellendus aliquid omnis libero.</p>
+       
         
     </div>
+    
     <footer class="footer text-footer">
         <div class="text-center">
             <a href="{% url 'main' %}" class="text-footer text-footer-link">Главная</a>
@@ -90,10 +70,10 @@
             <a href="{% url 'information' %}" class="text-footer text-footer-link">О нас</a>
         </div>
         <div class="copyright pt-5 text-center">
-            Создано с любовью в Союзе программистов
+            Создано с любовью &#128525 в Союзе программистов
         </div>
     </footer>
-</div>
+
 </body>
 <!-- Внешняя ссылка -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

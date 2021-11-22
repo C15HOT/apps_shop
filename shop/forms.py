@@ -3,22 +3,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
 
-# class UploadFileForm(forms.Form):
-#     title = forms.CharField(max_length=50)
-#     file = forms.FileField()
-
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text='Имя')
-    last_name = forms.CharField(max_length=30, required=False, help_text='Фамилия')
-    city = forms.CharField(max_length=36, required=False, help_text='Город')
-    phone = forms.CharField(max_length=30, required=False, help_text='Телефон')
-    information = forms.CharField(help_text='О себе', required=False)
-    avatar = forms.ImageField(required=False, help_text='Аватар')
+    first_name = forms.CharField(max_length=30, label='Имя', required=False)
+    last_name = forms.CharField(max_length=30, label='Фамилия', required=False )
+    city = forms.CharField(max_length=36, required=False, label='Город')
+    phone = forms.CharField(max_length=30, required=False, label='Телефон')
+    information = forms.CharField(label='О себе', required=False)
+    avatar = forms.ImageField(required=False, label='Фото профиля')
+    email = forms.EmailField(max_length=50, required=True, label='Email')
+    position = forms.CharField(max_length=100, required=True, label='Должность')
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'password1', 'password2')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
 class CommentsForm(forms.ModelForm):
     class Meta:
@@ -34,7 +32,7 @@ class ProfileForm(forms.ModelForm):
 class NewsForm(forms.ModelForm):
     class Meta:
         model = News
-        fields = ('title', 'content', 'image')
+        fields = ('title', 'content', 'annotation', 'image')
 
 class AppForm(forms.ModelForm):
     class Meta:
@@ -55,3 +53,9 @@ class CommentForm(forms.ModelForm):
         fields = [
             'text'
         ]
+
+
+class ScreenshotsForm(forms.Form):
+    files = forms.FileField(label='Скриншоты программы', required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+

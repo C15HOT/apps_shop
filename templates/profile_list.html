@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if profile_list %}
+
+     {% for profile in profile_list %}
+     
+        <a class="list_news__link" href="{% url 'profile_detail' profile.slug %}">{{ profile.user.username }}</a>
+     
+     {% endfor %}
+
+{% endif %}
+
+{% endblock %}

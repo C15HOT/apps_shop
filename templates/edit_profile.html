@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+ <h2>Редактирование профиля</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'edit_profile' slug %}">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+    <button>Сохранить</button></form>
+</body>
+{% endblock %}

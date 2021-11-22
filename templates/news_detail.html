@@ -11,7 +11,9 @@
 Дата обновления: <p>{{ news.update_at }}</p>
 Автор: <p>{{ news.user }}</p>
 
-<a href="{% url 'edit_news' news.slug %}"><button>Редактировать </button></a>
-<a href="{% url 'del_news' news.slug %}"><button>Удалить</button></a>
+{% if request.user.is_superuser or request.user == news.user %}
+    <a href="{% url 'edit_news' news.slug %}"><button>Редактировать</button></a>
 
+    <a href="{% url 'del_news' news.slug %}"><button>Удалить</button></a>
+    {% endif %}
 {% endblock %}

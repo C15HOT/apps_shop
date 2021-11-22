@@ -1,16 +1,21 @@
-
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Логин</title>
-</head>
-<body>
-<h2>Страница входа</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Вход</button>
-</form>
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Вход</title>
+        
+    <link rel="stylesheet" href="{% static 'css/login_page_style.css' %}">
+    </head>
+    <body>
+                    <!-- TODO Не всегда прогружаются стили ошибки (проверить)  -->
+            <form class="box" method="post" autocomplete="off">
+                <a href="{% url 'main' %}"><img src="{% static 'image/star.png' %}" alt="" style="width: 50px;"></a>
+                <h2>Вход</h2>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="submit" type="submit">Войти</button>
+            </form>
+         
+    </body>
 </html>
