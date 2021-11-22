@@ -2,12 +2,36 @@
 {% block content %}
 
 {% if news_list %}
-<!-- TODO 
+<!-- TODO
 
 TODO -->
      <!-- <ul> -->
+    {% for contact in page_obj %}
+    {# Each "contact" is a Contact model object. #}
+    {{ contact.full_name|upper }}<br>
+    ...
+{% endfor %}
+
+                                                <div class="pagination">
+                                                <span class="step-links">
+                                                    {% if page_obj.has_previous %}
+                                                        <a href="?page=1">&laquo; first</a>
+                                                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                                                    {% endif %}
+
+                                                    <span class="current">
+                                                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                                    </span>
+
+                                                    {% if page_obj.has_next %}
+                                                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                                                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                                                    {% endif %}
+                                                </span>
+                                                </div>
+
      {% for news in news_list %}
-     
+
         <div class="post">
             <h1>{{ news.title }}</h1>
             <span>Дата создания: {{ news.created_at }}</span>
@@ -17,16 +41,16 @@ TODO -->
                 <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
             </p>
         </div>
-        
+
 
         <!-- <a class="list_news__link" href="{% url 'news_detail' news.slug %}">{{ news.title }}</a>
-        
+
         <p>
             <img width="50" height="50" src="{{MEDIA_URL}}{{news.image.url}}">
             Дата создания: {{ news.created_at }}
             Автор: {{ news.user }}
         </p> -->
-     
+
      <!-- <li><a href="{% url 'news_detail' news.slug %}">{{ news.title }}</a></li> -->
      {% endfor %}
      <!-- </ul> -->
