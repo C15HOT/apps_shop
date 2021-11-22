@@ -48,12 +48,13 @@
     <!-- end new header -->
 
 
-    <div class="list_news">
-        
+    <div class="main">
+        <div class="infocontent">
         {% if request.user.is_authenticated %}
         {% else %}
         <h3 style="color: brown;">Вы не авторизованы на сайте</h3>
         <p>Еще нет аккаунта? Создайте его</p>
+        </div>
         {% endif %} 
            
         {% block content %}
