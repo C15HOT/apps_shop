@@ -55,6 +55,7 @@ class AppsListView(generic.ListView):
     context_object_name = 'apps_list'
     queryset = App.objects.all()
 
+
     def get_context_data(self, **kwargs):
         context = super(AppsListView, self).get_context_data(**kwargs)
 
@@ -96,6 +97,7 @@ class RegisterView(View):
             email = form.cleaned_data.get('email')
             information = form.cleaned_data.get('information')
             avatar = form.cleaned_data.get('avatar')
+            position = form.cleaned_data.get('position')
             if avatar:
                 Profile.objects.create(
                     user=user,
@@ -105,6 +107,7 @@ class RegisterView(View):
                     avatar=avatar,
                     information=information,
                     email=email,
+                    position=position,
                 )
             else:
                 Profile.objects.create(
@@ -115,6 +118,7 @@ class RegisterView(View):
 
                     information=information,
                     email=email,
+                    position=position,
                 )
 
             username = form.cleaned_data.get('username')
@@ -197,6 +201,7 @@ class NewsListView(generic.ListView):
     template_name = 'news_list.html'
     context_object_name = 'news_list'
     queryset = News.objects.select_related('user__profiles').all()
+    paginate_by = 3
 
 
 class NewsDetailView(generic.DetailView):

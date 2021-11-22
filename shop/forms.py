@@ -12,6 +12,7 @@ class RegisterForm(UserCreationForm):
     information = forms.CharField(label='О себе', required=False)
     avatar = forms.ImageField(required=False, label='Фото профиля')
     email = forms.EmailField(max_length=50, required=True, label='Email')
+    position = forms.CharField(max_length=100, required=True, label='Должность')
 
     class Meta:
         model = User
@@ -31,7 +32,7 @@ class ProfileForm(forms.ModelForm):
 class NewsForm(forms.ModelForm):
     class Meta:
         model = News
-        fields = ('title', 'content', 'image')
+        fields = ('title', 'content', 'annotation', 'image')
 
 class AppForm(forms.ModelForm):
     class Meta:

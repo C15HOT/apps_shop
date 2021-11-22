@@ -21,6 +21,7 @@ class News(models.Model):
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
     image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='news_avatars/')
+    annotation = models.TextField(max_length=300, verbose_name='Аннотация', default='', null=True)
 
     class Meta:
         ordering = ['-created_at']
@@ -66,6 +67,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=20, blank=True, verbose_name='Телефон')
     avatar = models.ImageField(blank=True, verbose_name='Аватар', default='star.png', upload_to='user_avatars/')
     slug = models.SlugField(unique=True)
+    position = models.CharField(max_length=100, default='', null=True, verbose_name='Должность')
 
     def __str__(self):
         return self.user.username
