@@ -3,7 +3,9 @@
 	background-color: #232531;
 	color: #cfcfd1;
 	margin: 0;
-	
+	position: relative;
+	padding-bottom: 150px;
+	min-height: 100vh;
 }
 
 *, *:before,*:after {
@@ -22,19 +24,18 @@
 /* HEADER 
 ========================== */
 .header {
+	
 	background-color: #1b1b24;
 	text-transform: uppercase;
 	box-shadow: 0 0 5px 0px black;
+	
 }
 
 .header__inner {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
-	padding: 35px 0;
-	/* border-bottom: 1px solid #515369; */
-	
+	padding: 35px 0;	
 }
 
 /* NAV 
@@ -98,51 +99,26 @@
 
 /* CARDS
 ================================== */
-/* .grid_cards {
-	background-color: #1b1b24;
-	display: grid;
-	place-items: center center;
-}
 
-.cards {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px,lft));
-	padding: 20px;
-	grid-gap: 40px;
-}
-.card {
-	background-color: #1b1b24;
-	border-radius: 20px;
-}
-.card_container{
-	background-color: #1b1b24;
-	position: relative;
-	clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-
-.img_card {
-	width: 50%;
-	display: block;
-	border-radius: 20px 20px;
-
-}
-.details {
-	background-color: #1b1b24;
-} */
 
 
 /* Content
 ===================================== */
+.main {
+width: 70%;
+margin: 0 auto;
+padding: 30px 20px;
+/* min-height: calc(10vh - 211px - 58px); */
+position: relative;
+/* min-width: 100vh; */
+}
 
-.infocontent,
-.content{
-	max-width: 1100px;
-	margin: 0 auto;
-	padding: 40px 20px;
+.infocontent {
+	text-align: center;
+	/* margin: 0 auto; */
+	padding: 10px 10px;
 }
-.infocontent{
-	padding: 0 500px;
-}
+
 
 .list_news{
 	/* max-width: 1100px; */
@@ -166,7 +142,7 @@
 	font-family: sans-serif;
 	text-align: justify;
 	line-height: 25px;
-	padding: 30px ;
+	padding: 20px ;
 }
 
 .read{
@@ -202,7 +178,8 @@
 	transition-property: box-shadow, transform;
 }
 .btn:hover, btn:focus, btn:active {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
+	box-shadow: 0 0 5px 0px black;
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
 	color: #fff;

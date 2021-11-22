@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 {% if news_list %}
@@ -12,7 +13,6 @@ TODO -->
             <h1>{{ news.title }}</h1>
             <span>Дата создания: {{ news.created_at }}</span>
             <span>Автор: {{ news.user }}</span>
-            <!-- <button class="read"><a class="list_news__link" href="{% url 'news_detail' news.slug %}">Читать</a></button> -->
             <p>
                 <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
             </p>
@@ -27,7 +27,7 @@ TODO -->
             Автор: {{ news.user }}
         </p> -->
      
-     <!-- <li><a href="{% url 'news_detail' news.slug %}">{{ news.title }}</a></li> -->
+     
      {% endfor %}
      <!-- </ul> -->
     {% else %}
