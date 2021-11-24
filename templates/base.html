@@ -48,22 +48,25 @@
     <!-- end new header -->
 
 
-    <div class="main">
-        <div class="infocontent">
+    <div class="main-container">
+        
         {% if request.user.is_authenticated %}
         {% else %}
+        <div class="infocontent">
         <h3 style="color: brown;">Вы не авторизованы на сайте</h3>
         <p>Еще нет аккаунта? Создайте его</p>
         </div>
         {% endif %} 
-           
-        {% block content %}
-        {% endblock %}
+        
+         {% block content %}
+        {% endblock %}   
+          
+        
        
         
     </div>
     
-    <footer class="footer text-footer">
+<footer class="footer text-footer">
         <div class="text-center">
             <a href="{% url 'main' %}" class="text-footer text-footer-link">Главная</a>
             <a href="{% url 'apps_list' %}" class="text-footer text-footer-link">Программы</a>
@@ -73,7 +76,7 @@
         <div class="copyright pt-5 text-center">
             Создано с любовью &#128525 в Союзе программистов
         </div>
-    </footer>
+</footer>
 
 </body>
 <!-- Внешняя ссылка -->
