@@ -7,34 +7,39 @@
 
 TODO -->
      <!-- <ul> -->
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-    
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-    
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
+       
                                                 
 
      {% for news in news_list %}
 
         <div class="post">
-            <h1>{{ news.title }}</h1>
+            <div class="post-news">
+                <div class="post-img">
+                 <img src="{{MEDIA_URL}}{{news.image.url}}">
+                </div>
+                
+                <div class="post-info">
+                    <div class="post-date">
+                    {{ news.created_at }}
+                    </div>
+                    <h1 class="post-title">
+                    {{ news.title }}
+                    </h1>
+                    <div class="post-text">
+                    Аннотация Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus mollitia sit placeat et a vel ducimus porro? Nulla excepturi eveniet odit, ad totam nostrum commodi deleniti repellat deserunt dolorum praesentium!
+                    </div>
+                    <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
+                </div>
+
+            </div>
+            
+
+            <!-- <h1>{{ news.title }}</h1>
             <span>Дата создания: {{ news.created_at }}</span>
             <span>Автор: {{ news.user }}</span>
             <p>
                 <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
-            </p>
+            </p> -->
         </div>
 
 
@@ -51,6 +56,23 @@ TODO -->
 
      {% endfor %}
      
+     <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Следующаяя</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 
 
      <!-- </ul> -->
