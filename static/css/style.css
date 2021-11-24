@@ -287,6 +287,95 @@ position: relative;
 	color: #818186;
 	
 }
+
+/* User card
+============================ */
+
+.user-card {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	font-family: sans-serif;
+	display: block;
+	width: 70%;
+	align-items: center;
+	padding: 0px;
+	justify-content: space-between;
+	background-color: #fff;
+	width: 530px;
+	min-height: 90px;
+	border-radius: 100px 20px 20px 100px;
+	box-shadow: 0 0 5px 0px black;
+}
+.avatar {
+	float: left;
+	width: 90px;
+	height: 90px;
+	object-fit: cover;
+	float: left;
+	
+}
+.avatar > img{
+	margin-left: 0px;
+	border-radius: 45px 45px 45px 45px;
+	background-color: #fff;
+	padding: 5px;
+	box-shadow: 0 0 5px 0px black;
+	/* float: left; */
+
+}
+
+.name {
+	margin-left: 100px;
+	margin-top: 15px;
+	font-size: 20px;
+	font-family: sans-serif;
+	position: absolute;
+	text-align: center;
+	color: #232531;
+}
+.position {
+	position: absolute;
+	margin-left: 100px;
+	margin-top: 47px;
+	text-align: center;
+	font-size: 14px;
+	
+	color: #818186;
+}
+.content{
+	float: left;
+}
+.user-link{
+	align-items: center;
+	justify-content: space-between;
+	margin-left: 410px;
+	margin-top: 35px;
+	margin-bottom: auto;
+	text-decoration: none;
+}
+.user-link a {
+	font-family: sans-serif;
+	text-decoration: none;
+	font-size: 14px;
+	padding: 7px;
+	background-color: #6daae1;
+	/* background: linear-gradient(to bottom #6daae1 0%, #81589f 100%); */
+	border-radius: 25px;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0 0 3px 0 black;
+	text-align: center;
+}
+.user-link > a:hover, .user-link > a:focus, .user-link > a:active{
+	text-decoration: none;
+	box-shadow: 0 0 5px 0px black;
+	color: #fff;
+}
+
+
+
+
 /* Footer
 ======================================= */
 .footer{
