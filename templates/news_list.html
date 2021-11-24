@@ -15,7 +15,7 @@ TODO -->
         <div class="post">
             <div class="post-news">
                 <div class="post-img">
-                 <img src="{{MEDIA_URL}}{{news.image.url}}">
+                 <img height="180" width="180" src="{{MEDIA_URL}}{{news.image.url}}">
                 </div>
                 
                 <div class="post-info">
@@ -23,12 +23,15 @@ TODO -->
                     {{ news.created_at }}
                     </div>
                     <h1 class="post-title">
-                    {{ news.title }}
+                        <a href="{% url 'news_detail' news.slug %}"> {{ news.title }} </a>
                     </h1>
                     <div class="post-text">
                     {{ news.annotation }}
                     </div>
-                    <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
+                    <!-- <div class="btn-news">
+                        <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
+                    </div> -->
+                    
                 </div>
 
             </div>
