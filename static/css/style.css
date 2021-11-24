@@ -104,13 +104,14 @@
 
 /* Content
 ===================================== */
-.main {
+.main-container {
 width: 70%;
 margin: 0 auto;
 padding: 30px 20px;
 /* min-height: calc(10vh - 211px - 58px); */
 position: relative;
 /* min-width: 100vh; */
+/* min-height: 100vh; */
 }
 
 .infocontent {
@@ -165,7 +166,7 @@ position: relative;
 	font-weight: bold;
 	background: #81589f;
 	width: 80px;
-	padding: 20px;
+	padding: 10px;
 	text-align: center;
 	text-decoration: none;
 	text-transform: capitalize;
@@ -222,7 +223,7 @@ position: relative;
 }
 
 .pt-5 {
-	padding-top: 3erm;
+	padding-top: 3rem;
 }
 .text-center {
 	text-align: center ;
