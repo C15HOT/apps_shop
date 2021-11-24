@@ -16,9 +16,11 @@
                 Неверифицировано
                 {% endif %}</p>
     Автор: <p>{{ app.user }}</p>
+    Количество скачиваний: <p>{{ app.download_count }}</p>
     Категория: <p><a href="{% url 'category_detail' app.category.slug %}">{{ app.category }}</a></p>
     Файлы:
-    <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>
+{#    <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>#}
+    <a href="{% url 'download' app.slug %}" download>Скачать файл {{ app.file.name }}</a>
 
     {% if files %}
     Скриншоты: {% for file in files %}

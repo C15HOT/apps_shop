@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View, generic
 from transliterate import slugify
 from .forms import RegisterForm
@@ -134,6 +135,17 @@ class AppsDetailView(generic.DetailView):
     model = App
     context_object_name = 'app'
     template_name = 'apps_detail.html'
+
+    def post(self, request, pk):
+        print(request)
+        if request.POST.get('download'):
+            app = self.get_object()
+            print(app.download_count)
+            app.download_count += 1
+            print(app.download_count)
+            app.save()
+            return redirect(reverse('app_detail', args=[app.slug]))
+
 
     def get_context_data(self, **kwargs):
         context = super(AppsDetailView, self).get_context_data(**kwargs)
@@ -300,6 +312,15 @@ class AppsDelView(View):
         app = App.objects.get(slug=slug)
         app.delete()
         return redirect('apps_list')
+
+
+class DownloadFileView(View):
+
+    def get(self, request, slug):
+        app = App.objects.get(slug=slug)
+        app.download_count += 1
+        app.save(update_fields=['download_count'])
+        return HttpResponseRedirect(app.file.url)
 
 
 
