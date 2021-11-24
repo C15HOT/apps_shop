@@ -26,7 +26,7 @@ TODO -->
                     {{ news.title }}
                     </h1>
                     <div class="post-text">
-                    Аннотация Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus mollitia sit placeat et a vel ducimus porro? Nulla excepturi eveniet odit, ad totam nostrum commodi deleniti repellat deserunt dolorum praesentium!
+                    {{ news.annotation }}
                     </div>
                     <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
                 </div>
