@@ -4,9 +4,48 @@
 {% if profile_list %}
 
      {% for profile in profile_list %}
-     
+      <div class="user-card">
+         <div class="content">
+            <div class="avatar">
+               <img width="90" height="90" src="{{MEDIA_URL}}{{profile.avatar.url}}">
+            </div>
+            
+               <div class="name">{{ profile.user.first_name }} {{ profile.user.last_name  }}</div>
+               <div class="position">
+                  {{ profile.position }}
+               </div>
+            <!-- <div class="name">{{ profile.user.first_name }} {{ profile.user.last_name  }}</div> -->
+            
+            <!-- <span class="name"><p>{{ profile.user.first_name }} {{ profile.user.last_name  }}</p></span> -->
+            
+            <!-- <div class="position">
+               {{ profile.position }}
+            </div> -->
+            
+            <!-- <span class="position"><p>{{ profile.position }}</p></span> -->
+         <div class="user-link">
+            <a href="{% url 'profile_detail' profile.slug %}">Просмотреть</a>
+         </div>
+         
+         
+         </div>
+         
+         <!-- <span class="user-link">
+            <p>
+               <a href="{% url 'profile_detail' profile.slug %}" class="user-link">Просмотреть</a>
+            </p>
+         </span> -->
+      </div>
+
+
+
+<!-- 
+      <img width="100" height="100" src="{{MEDIA_URL}}{{profile.avatar.url}}">
+      Имя: <p>{{ profile.user.first_name }}</p>
+      Фамилия: <p>{{ profile.user.last_name  }}</p>
+      Должность: <p>{{ profile.position }}</p>
         <a class="list_news__link" href="{% url 'profile_detail' profile.slug %}">{{ profile.user.username }}</a>
-     
+      -->
      {% endfor %}
 
 {% endif %}
