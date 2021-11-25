@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView, LogoutView
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -323,4 +324,15 @@ class DownloadFileView(View):
         return HttpResponseRedirect(app.file.url)
 
 
+class SearchAppsView(generic.ListView):
+    model = App
+    template_name = 'search_app.html'
+
+    def get_queryset(self):
+
+        query = self.request.GET.get('q')
+        object_list = App.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query)
+        )
+        return object_list
 

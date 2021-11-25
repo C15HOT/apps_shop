@@ -28,6 +28,7 @@ urlpatterns = [
     path('profiles_detail/<str:slug>', ProfileDetailView.as_view(), name='profile_detail'),
     path('edit_profiles/<str:slug>', ProfileEditFormView.as_view(), name='edit_profile'),
     path('edit_app/<str:slug>', AppEditFormView.as_view(), name='edit_app'),
-    path('download_app/<str:slug>', DownloadFileView.as_view(), name='download')
+    path('download_app/<str:slug>', DownloadFileView.as_view(), name='download'),
+    path('search_app/', SearchAppsView.as_view(), name='search_app')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

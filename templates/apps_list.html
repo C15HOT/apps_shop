@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<form action="{% url 'search_app' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+
 {% if categories %}
     <h2>Категории:</h2>
      <ul>

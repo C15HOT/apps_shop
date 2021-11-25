@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+ <h2>Найденные приложения:</h2>
+<ul>
+  {% for app in object_list %}
+
+      <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li>
+
+
+  {% endfor %}
+</ul>
+{% endblock %}
