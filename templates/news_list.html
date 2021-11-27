@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 {% if news_list %}
@@ -27,7 +27,7 @@ TODO -->
                     </h1>
                     <div class="post-text">
                     {{ news.annotation }}
-                    </div>
+                    </div>            
                     <!-- <div class="btn-news">
                         <a class="btn" href="{% url 'news_detail' news.slug %}">Читать</a>
                     </div> -->
