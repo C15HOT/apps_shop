@@ -214,7 +214,7 @@ class NewsListView(generic.ListView):
     template_name = 'news_list.html'
     context_object_name = 'news_list'
     queryset = News.objects.select_related('user__profiles').all()
-    paginate_by = 3
+    paginate_by = 6
 
 
 class NewsDetailView(generic.DetailView):
