@@ -13,6 +13,7 @@ TODO -->
      {% for news in news_list %}
 
         <div class="post">
+            <a href="{% url 'news_detail' news.slug %}">  
             <div class="post-news">
                 <div class="post-img">
                  <img height="135" width="135" src="{{MEDIA_URL}}{{news.image.url}}">
@@ -23,7 +24,8 @@ TODO -->
                     {{ news.created_at }}
                     </div>
                     <h1 class="post-title">
-                        <a href="{% url 'news_detail' news.slug %}"> {{ news.title }} </a>
+                        <!-- <a href="{% url 'news_detail' news.slug %}"> {{ news.title }} </a> -->
+                        {{ news.title }}
                     </h1>
                     <div class="post-text">
                     {{ news.annotation }}
@@ -35,7 +37,7 @@ TODO -->
                 </div>
 
             </div>
-            
+            </a>
 
             <!-- <h1>{{ news.title }}</h1>
             <span>Дата создания: {{ news.created_at }}</span>
