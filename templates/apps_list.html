@@ -4,7 +4,37 @@
 <form action="{% url 'search_app' %}" method="get">
   <input class="search" name="q" type="text" placeholder="Поиск">
 </form>
+<!-- TODO Исправить текст, исправить наложение футера -->
 
+
+{% if apps_list %}
+<div class="main-container-apps-list">
+
+<h2>Приложения:</h2>
+
+ 
+     {% for app in apps_list %}
+     
+    
+    <div class="apps-list">
+        <a href="{% url 'app_detail' app.slug %}">
+        <div class="apps-list__img">
+            <img width="150" height="150" src="{{MEDIA_URL}}{{app.image.url}}">  
+        </div>
+        <div class="apps-title">
+             {{ app.title }}
+        </div>
+        </a>
+    </div>
+     
+    
+     {% endfor %}
+    
+{% else %}
+    <p>Приложений нет</p>
+    
+{% endif %}
+</div>
 {% if categories %}
     <h2>Категории:</h2>
      <ul>
@@ -14,14 +44,9 @@
  </ul>
     {% endif %}
 
-{% if apps_list %}
- <h2>Приложения:</h2>
-    <ul>
-     {% for app in apps_list %}
-     <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li>
-     {% endfor %}
- </ul>
-{% else %}
-    <p>Приложений нет</p>
-{% endif %}
+
+ <!-- <div class="footer-apps">
+      1   
+</div> -->
+    
 {% endblock %}
