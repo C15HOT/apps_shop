@@ -152,7 +152,8 @@ position: relative;
 	display: block;
 	align-items: center;
 	border: 1px solid #3498db;
-	border-radius: .8rem;
+	/* border-radius: .8rem; */
+	border-radius: 14px;
 	margin-bottom: 10px;
 	width: 80%;
 	margin-top: auto;
@@ -160,7 +161,7 @@ position: relative;
 	margin-right: auto;
 	min-height: 170px;
 	max-height: 170px;
-	transition-duration: 0.3s;
+	transition-duration: 0.2s;
 	-webkit-transition-property: box-shadow, transform;
 	transition-property: box-shadow, transform;
 	cursor: pointer;
@@ -170,11 +171,11 @@ position: relative;
 	text-decoration: none;
 }
 .post:hover{
-	text-decoration: none;
+	
 	border: 1px solid #3498db;
 	box-shadow: 0 0 5px 0 #3498db;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
 }
 .pagination {
 	margin-left: auto;
@@ -323,8 +324,10 @@ position: relative;
 	align-items: center;
 	padding: 0px;
 	justify-content: space-between;
-	background-color: #fff;
-	
+	/* background-color: #fff; */
+	background-color: #f9f7f2;
+	/* background-color: #191919;
+	border: 1px solid #3498db; */
 	width: 530px;
 	min-height: 90px;
 	border-radius: 100px 20px 20px 100px;
@@ -341,7 +344,10 @@ position: relative;
 .avatar > img{
 	margin-left: 0px;
 	border-radius: 45px 45px 45px 45px;
-	background-color: #fff;
+	/* background-color: #fff; */
+	background-color: #f9f7f2;
+	/* background-color: #191919;
+	border: 1px solid #3498db; */
 	padding: 5px;
 	box-shadow: 0 0 5px 0px black;
 	/* float: left; */
