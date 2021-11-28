@@ -36,13 +36,13 @@
 {% endif %}
 </div>
 {% if categories %}
-    <h2>Категории:</h2>
-     <ul>
-     {% for category in categories %}
-     <li><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></li>
-     {% endfor %}
- </ul>
-
+    <h2 style="font-size: 18px;">Категории:</h2>
+     <div class="apps-list-category">
+        {% for category in categories %}
+        <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
+        {% endfor %}
+ </div>
+{% endif %}
  <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
@@ -60,11 +60,5 @@
         {% endif %}
     </span>
 </div>
-    {% endif %}
 
-
- <!-- <div class="footer-apps">
-      1   
-</div> -->
-    
 {% endblock %}
