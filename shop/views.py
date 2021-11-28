@@ -56,6 +56,7 @@ class AppsListView(generic.ListView):
     template_name = 'apps_list.html'
     context_object_name = 'apps_list'
     queryset = App.objects.all()
+    paginate_by = 18
 
 
     def get_context_data(self, **kwargs):

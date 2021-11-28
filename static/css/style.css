@@ -505,10 +505,12 @@ position: relative;
 	height: 100vh;
 	text-decoration: none;
 }
-
+.apps-a{
+	display: block;
+	float: left;
+}
 .apps-list{
 	background-color: #1b1b24;
-	
 	display: block;
 	line-height: 25px;
 	min-width: 200px;
@@ -516,7 +518,6 @@ position: relative;
 	max-width: 200px;
 	max-height: 250px;
 	float: left;
-	
 	border: 1px solid #3498db;
 	margin-left: 10px;
 	margin-bottom: 10px;
