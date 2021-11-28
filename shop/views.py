@@ -206,7 +206,7 @@ class CreateAppView(View):
                 instance = ScreenshotsApp(files=f, app=app)
                 instance.save()
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('apps'))
         return render(request, 'create_app.html', context={'app_form': app_form, 'screenshots_form':screenshots_form})
 
 

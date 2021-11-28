@@ -3,7 +3,7 @@
 <h1>{{ app.title }}</h1>
 
  {% if app.image %}
-    <img width="100" height="100" src="{{MEDIA_URL}}{{app.image.url}}">
+    <img width="300" height="300" style="object-fit: cover;" src="{{MEDIA_URL}}{{app.image.url}}">
  {% else %}
      <p>Скриншотов нет</p>
  {% endif %}

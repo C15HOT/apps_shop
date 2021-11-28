@@ -122,7 +122,7 @@
 	min-height: 200px;
 	/* max-height: 400px; */
 	min-width: 300px;
-	max-width: 500px;
+	max-width: 600px;
 	border-radius: 14px;
 	border: 1px solid #3498db;
 	box-shadow: 0 0 15px 0 black;
@@ -225,8 +225,8 @@ position: relative;
 	margin-top: auto;
 	margin-left: auto;
 	margin-right: auto;
-	min-height: 170px;
-	max-height: 170px;
+	min-height: 175px;
+	max-height: 175px;
 	transition-duration: 0.2s;
 	-webkit-transition-property: box-shadow, transform;
 	transition-property: box-shadow, transform;
