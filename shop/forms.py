@@ -37,7 +37,7 @@ class NewsForm(forms.ModelForm):
 class AppForm(forms.ModelForm):
     class Meta:
         model = App
-        fields = ('title', 'image', 'description', 'category', 'file')
+        fields = ('title', 'image', 'description', 'version', 'requirements', 'category', 'file')
 
 
 class CategoryForm(forms.ModelForm):

@@ -47,6 +47,8 @@ class App(models.Model):
     download_count = models.PositiveIntegerField(default=0, verbose_name='Количество скачиваний')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
     comments = GenericRelation('comments')
+    version = models.CharField(max_length=10, verbose_name='Версия', default='', null=True)
+    requirements = models.TextField(verbose_name='Системные требования', default='', null=True)
 
 
 
