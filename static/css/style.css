@@ -547,11 +547,11 @@ position: relative;
 
 .apps-list__img{
 	margin-top: 15px;
-	border-radius: 50%;
+	border-radius: 10px;
 	
 }
 .apps-list__img>img{
-	border-radius: 50%;
+	border-radius: 10px;
 	object-fit: cover;
 }
 .apps-title {
