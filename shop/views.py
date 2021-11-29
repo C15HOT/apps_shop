@@ -56,6 +56,7 @@ class AppsListView(generic.ListView):
     template_name = 'apps_list.html'
     context_object_name = 'apps_list'
     queryset = App.objects.all()
+    paginate_by = 24
 
 
     def get_context_data(self, **kwargs):
@@ -205,7 +206,7 @@ class CreateAppView(View):
                 instance = ScreenshotsApp(files=f, app=app)
                 instance.save()
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('apps'))
         return render(request, 'create_app.html', context={'app_form': app_form, 'screenshots_form':screenshots_form})
 
 

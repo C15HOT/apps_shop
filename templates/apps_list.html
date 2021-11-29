@@ -4,24 +4,61 @@
 <form action="{% url 'search_app' %}" method="get">
   <input class="search" name="q" type="text" placeholder="Поиск">
 </form>
+<!-- TODO Исправить текст, исправить наложение футера -->
 
-{% if categories %}
-    <h2>Категории:</h2>
-     <ul>
-     {% for category in categories %}
-     <li><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></li>
-     {% endfor %}
- </ul>
-    {% endif %}
 
 {% if apps_list %}
- <h2>Приложения:</h2>
-    <ul>
+<div class="main-container-apps-list">
+
+<!-- <h2>Приложения:</h2> -->
+
+ 
      {% for app in apps_list %}
-     <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li>
+     
+    <a class="apps-a" href="{% url 'app_detail' app.slug %}">
+    <div class="apps-list">
+        
+        <div class="apps-list__img">
+            <img width="150" height="150" src="{{MEDIA_URL}}{{app.image.url}}">  
+        </div>
+        <div class="apps-title">
+             {{ app.title }}
+        </div>
+        
+    </div>
+    </a> 
+    
      {% endfor %}
- </ul>
+    
 {% else %}
     <p>Приложений нет</p>
+    
 {% endif %}
+</div>
+{% if categories %}
+    <h2 style="font-size: 18px;">Категории:</h2>
+     <div class="apps-list-category">
+        {% for category in categories %}
+        <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
+        {% endfor %}
+ </div>
+{% endif %}
+ <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Следующаяя</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% endblock %}
