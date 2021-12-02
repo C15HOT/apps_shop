@@ -13,6 +13,20 @@ from .utils import create_comments_tree
 from django.contrib.contenttypes.models import ContentType
 from django.db import transaction
 
+
+
+import random
+import string
+
+
+def generate_random_string(length):
+    letters = string.ascii_lowercase
+    rand_string = ''.join(random.choice(letters) for i in range(length))
+    return rand_string
+
+
+generate_random_string(8)
+
 def comments_view(request):
     comments = App.objects.first().comments.all()
     result = create_comments_tree(comments)
@@ -197,7 +211,7 @@ class CreateAppView(View):
         screenshots_form = ScreenshotsForm(request.POST, request.FILES)
 
         files = request.FILES.getlist('files')
-        slug = slugify(request.POST['title']+'_абс')
+        slug = slugify(request.POST['title']+'_абс' + generate_random_string(4) )
         # Нужно добавлять проверку на уникальность или сразу делать уникальным
         if app_form.is_valid() and screenshots_form.is_valid():
             app = App.objects.create(**app_form.cleaned_data, slug=slug, user_id=request.user.id)
@@ -234,7 +248,7 @@ class NewsAddFormView(View):
     def post(self, request):
         news_form = NewsForm(request.POST, request.FILES)
         print(request.POST['title'])
-        slug = slugify(request.POST['title']+'_абс')
+        slug = slugify(request.POST['title']+'_абс'+ generate_random_string(4))
         print(slug)
 
         # Нужно добавлять проверку на уникальность или сразу делать уникальным

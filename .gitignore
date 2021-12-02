@@ -5,3 +5,4 @@ shop/migrations/__pycache__/
 shop/templatetags/__pycache__/
 db.sqlite3
 media/
+/data.json
