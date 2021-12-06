@@ -12,9 +12,9 @@
 Автор: <p>{{ news.user }}</p>
 
 {% if request.user.is_superuser or request.user == news.user %}
-    <a href="{% url 'edit_news' news.slug %}"><button>Редактировать</button></a>
+    <a href="{% url 'edit_news' news.slug %}"><button class="btn">Редактировать</button></a>
 
-    <a href="{% url 'del_news' news.slug %}"><button>Удалить</button></a>
+    <a href="{% url 'del_news' news.slug %}"><button class="btn">Удалить</button></a>
     {% endif %}
 <!-- TODO добавить padding-bottom -->
 {% endblock %}

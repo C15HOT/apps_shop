@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2>Создание новости</h2>
-    <form method="post" action="{% url 'create_news' %}" enctype="multipart/form-data">
+    
+    <div class="form_create_news">
+        <h2 id="create_news_title">Создание новости</h2>
+
+      <form method="post" action="{% url 'create_news' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ news_form.as_p}}
-        <button type="submit">Создать</button>
+        <button class="btn" type="submit">Создать новость</button>
 
-    </form>
+    </form>  
+    </div>
+    
 {% endblock %}
