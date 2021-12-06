@@ -92,6 +92,7 @@
 }
 
 
+
 /* Animated logo 
 ============================*/
 .logo{
@@ -217,7 +218,7 @@ position: relative;
 	box-shadow: 0 0 5px 0px black;
 	display: block;
 	align-items: center;
-	border: 1px solid #3498db;
+	border: 1px solid #1b1b24;
 	/* border-radius: .8rem; */
 	border-radius: 14px;
 	margin-bottom: 10px;
@@ -520,7 +521,7 @@ position: relative;
 	max-width: 200px;
 	max-height: 250px;
 	float: left;
-	border: 1px solid #3498db;
+	border: 1px solid #1b1b24;
 	margin-left: 10px;
 	margin-bottom: 10px;
 	margin-top: auto;
