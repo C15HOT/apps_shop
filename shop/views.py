@@ -251,7 +251,7 @@ class NewsAddFormView(View):
         slug = slugify(request.POST['title']+'_абс'+ generate_random_string(4))
         print(slug)
 
-        # Нужно добавлять проверку на уникальность или сразу делать уникальным
+
 
         if news_form.is_valid():
             News.objects.create(**news_form.cleaned_data, slug=slug, user_id=request.user.id)

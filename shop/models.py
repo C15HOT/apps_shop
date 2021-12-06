@@ -4,9 +4,10 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название категории')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=255)
 
     def __str__(self):
         return self.name
@@ -19,7 +20,7 @@ class News(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата создания')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего редактирования')
     user = models.ForeignKey(User, verbose_name='Пользователь', default=None, null=True, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=255)
     image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='news_avatars/')
     annotation = models.TextField(max_length=300, verbose_name='Аннотация', default='', null=True)
 
@@ -36,8 +37,8 @@ class App(models.Model):
         (False, 'Неверифицированое ПО')
     ]
 
-    title = models.CharField(max_length=255, verbose_name='Название')
-    slug = models.SlugField(unique=True)
+    title = models.CharField(max_length=50, verbose_name='Название')
+    slug = models.SlugField(unique=True, max_length=255)
     image = models.ImageField(verbose_name='Заставка', default='star.png', blank=True, upload_to='avatars/')
     description = models.TextField(verbose_name='Описание')
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='apps')
@@ -68,7 +69,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=30, blank=True, verbose_name='Город')
     phone = models.CharField(max_length=20, blank=True, verbose_name='Телефон')
     avatar = models.ImageField(blank=True, verbose_name='Аватар', default='star.png', upload_to='user_avatars/')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=255)
     position = models.CharField(max_length=100, default='', null=True, verbose_name='Должность')
 
     def __str__(self):
