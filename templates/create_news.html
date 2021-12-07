@@ -2,15 +2,15 @@
 {% block content %}
 
     
-    <div class="form_create_news">
-        <h2 id="create_news_title">Создание новости</h2>
-
-      <form method="post" action="{% url 'create_news' %}" enctype="multipart/form-data">
+    
+        <h2 id="create_title">Создание новости</h2>
+  
+      <form class="form-news" method="post" action="{% url 'create_news' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ news_form.as_p}}
         <button class="btn" type="submit">Создать новость</button>
 
     </form>  
-    </div>
+    
     
 {% endblock %}
