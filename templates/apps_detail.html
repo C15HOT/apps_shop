@@ -22,19 +22,32 @@
 {#    <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>#}
     <a href="{% url 'download' app.slug %}" download>Скачать файл {{ app.file.name }}</a>
 
-    {% if files %}
-    Скриншоты: {% for file in files %}
 
-    <img width="100" height="100" src="{{MEDIA_URL}}{{file.files.url}}">
-        <br>
+
+
+    <!-- Slider -->
+<!-- <div class="slider-container"> -->
+
+
+    <!-- <div class="image-container">    -->
+    {% if files %}
+    
+    Скриншоты: 
+    {% for file in files %}
+        <!-- {% for i in range %} -->
+    <img src="{{MEDIA_URL}}{{file.files.url}}" >
+        <!-- {% endfor %} -->
     {% endfor %}
     {% endif %}
-
+    <!-- </div> -->
+    <!-- <button id="prev"> &lt; </button> -->
+    <!-- <button id="next"> &gt; </button> -->
+<!-- </div> -->
 <br>
 {% if request.user.is_superuser or request.user == app.user %}
-    <a href="{% url 'edit_app' app.slug %}"><button>Редактировать</button></a>
+    <a href="{% url 'edit_app' app.slug %}"><button class="btn">Редактировать</button></a>
 
-    <a href="{% url 'del_app' app.slug %}"><button>Удалить</button></a>
+    <a href="{% url 'del_app' app.slug %}"><button class="btn">Удалить</button></a>
     {% endif %}
 
 
