@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <h1>{{ app.title }}</h1>
 
  {% if app.image %}
@@ -26,23 +27,35 @@
 
 
     <!-- Slider -->
-<!-- <div class="slider-container"> -->
+<div class="slider-container">
 
 
-    <!-- <div class="image-container">    -->
+     
     {% if files %}
     
-    Скриншоты: 
+    <!-- Скриншоты:  -->
     {% for file in files %}
-        <!-- {% for i in range %} -->
-    <img src="{{MEDIA_URL}}{{file.files.url}}" >
-        <!-- {% endfor %} -->
+     <div class="slide-container">
+    <img class="slide-img" src="{{MEDIA_URL}}{{file.files.url}}" >
+     </div>   
     {% endfor %}
     {% endif %}
-    <!-- </div> -->
-    <!-- <button id="prev"> &lt; </button> -->
-    <!-- <button id="next"> &gt; </button> -->
-<!-- </div> -->
+    
+    <div class="slide-navigation">
+        <i class="prev-btn">&lt</i>
+        <i class="next-btn">&gt</i>
+    </div>
+    <div class="navigation-visibility">
+    {% if files %}
+    {% for file in files %}
+    <div class="slide-icon">
+    </div>  
+    {% endfor %}
+    {% endif %}
+    </div>
+
+
+</div>
 <br>
 {% if request.user.is_superuser or request.user == app.user %}
     <a href="{% url 'edit_app' app.slug %}"><button class="btn">Редактировать</button></a>
@@ -51,4 +64,6 @@
     {% endif %}
 
 
+
+    <script src="{% static 'js/slider.js' %}"></script>
 {% endblock %}

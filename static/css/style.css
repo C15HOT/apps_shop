@@ -659,50 +659,93 @@ position: relative;
 ==================================*/
 .slider-container{
 	background-color: #cfcfd1;
-	width: 70%;
-	min-width: 570px;
+	width: 90%;
+	min-width: 900px;
+	min-height: 800px;
+	margin: 20px;
 	position: relative;
 	border-radius: 14px;
-	padding: 20px;
+	/* padding: 20px; */
 	box-shadow: 0 0 5px 0 black;
 	display: block;
 }
 
-.image-container{
-	position: relative;
-	width: 96%;
-	border: 1px solid #3498db;
-
-}
-.image-container>img{
-	position: relative;
-	width: 100%;
-	display: none;
-}
-.active{
-	display: block;
-}
-#prev, #next {
-	height: 40px;
-	width: 40px;
+.slide-container{
 	position: absolute;
-	background-color: #3498db;
-	color: #fff;
-	margin: auto;
-	top: 0;
-	bottom: 0;
-	border: none;
-	border-radius: 4px;
-	font-size: 18px;
-	font-weight: bolder;
+	width: 100%;
+	height: 100%;
+	clip-path: circle(0% at 0 50%);
 }
-#prev{
-	left: 15px;
+.slide-container.active{
+	clip-path: circle(150% at 0 50%);
+}
+.slide-img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 14px;
+	
+}
+.slide-navigation{
+	height: 780px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+
 }
 
-#next{
-	right: 15px;
+.slider-container:hover .slide-navigation{
+	opacity: 1;
 }
+.prev-btn, .next-btn{
+	z-index: 999;
+	font-size: 20px;
+	color: #fff;
+	background: #3498db;
+	padding: 10px;
+	cursor: pointer;
+	box-shadow: 0 0 5px 0 black;
+}
+
+.prev-btn{
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+.next-btn{
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+.navigation-visibility{
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+}
+.navigation-visibility .slide-icon{
+	z-index: 999;
+	background: rgba(255, 255, 255, 0.2);
+	width: 20px;
+	height: 10px;
+	transform: translateY(-50px);
+	margin: 0 6px;
+	border-radius: 4px;
+	box-shadow: 0 0 5px 0 black;
+}
+.navigation-visibility .slide-icon.active {
+	background: #3498dbc2;
+}
+
+
+@media (max-width: 900px){
+	.slider-container{
+		width: 100%;
+
+	}
+}
+
 /* Footer
 ======================================= */
 .footer{
