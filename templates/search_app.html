@@ -3,13 +3,25 @@
 
 
 
- <h2>Найденные приложения:</h2>
-<ul>
+ <h2 style="text-align: center;">Найденные приложения:</h2>
+ <div class="main-container-apps-list">
   {% for app in object_list %}
 
-      <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li>
+  <a class="apps-a" href="{% url 'app_detail' app.slug %}">
+    <div class="apps-list">
+        
+        <div class="apps-list__img">
+            <img width="150" height="150" src="{{MEDIA_URL}}{{app.image.url}}">  
+        </div>
+        <div class="apps-title">
+             {{ app.title }}
+        </div>
+        
+    </div>
+    </a> 
+      <!-- <li><a href="{% url 'app_detail' app.slug %}">{{ app.title }}</a></li> -->
 
 
   {% endfor %}
-</ul>
+</div>
 {% endblock %}
