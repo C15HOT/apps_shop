@@ -97,7 +97,7 @@
 	text-align: center;
 	color: #b89535;
 }
-.form-news {
+.create-form {
 	text-align: center;
 	background: #1b1b24;
 	border-radius: 14px;
@@ -120,7 +120,14 @@ form > p label{
 #id_annotation, 
 #id_description,
 #id_version,
-#id_requirements{
+#id_requirements,
+#id_user,
+#id_email,
+#id_information,
+#id_city,
+#id_phone,
+#id_slug,
+#id_position{
 	
 	display: block;
 	border: 1px solid #3498db;
@@ -142,7 +149,14 @@ form > p label{
 #id_content:hover, #id_content:focus, 
 #id_description:hover, #id_description:focus, 
 #id_version:hover, #id_version:focus,
-#id_requirements:hover, #id_requirements:focus{
+#id_requirements:hover, #id_requirements:focus,
+#id_user:hover, #id_user:focus,
+#id_email:hover, #id_email:focus,
+#id_information:hover, #id_information:focus,
+#id_city:hover, #id_city:focus,
+#id_phone:hover, #id_phone:focus,
+#id_slug:hover, #id_slug:focus,
+#id_position:hover, #id_position:focus{
 	
 	border: 1px solid #3498db;
 	box-shadow: 0 0 5px 0 #3498db;
