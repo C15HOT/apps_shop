@@ -2,9 +2,9 @@
 {% block content %}
 {% load static %}
 <h1>{{ app.title }}</h1>
-
+<!-- TODO Добавть версию и системные требования -->
  {% if app.image %}
-    <img width="300" height="300" style="object-fit: cover;" src="{{MEDIA_URL}}{{app.image.url}}">
+    <img class="app-detail-img" width="300" height="300"  src="{{MEDIA_URL}}{{app.image.url}}">
  {% else %}
      <p>Скриншотов нет</p>
  {% endif %}
@@ -21,6 +21,8 @@
     Категория: <p><a href="{% url 'category_detail' app.category.slug %}">{{ app.category }}</a></p>
     Файлы:
 {#    <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>#}
+    
+    <!-- TODO добавить доступность ссылки после верификации. Если верифицирован, то качать можно, иначе нет -->
     <a href="{% url 'download' app.slug %}" download>Скачать файл {{ app.file.name }}</a>
 
 

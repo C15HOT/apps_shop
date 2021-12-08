@@ -669,6 +669,17 @@ position: relative;
 	color: #fff;
 	text-decoration: none;
 }
+
+/* APP DETAIL
+================================= */
+.app-detail-img{
+	object-fit: cover;
+	border-radius: 14px;
+	box-shadow: 0 0 5px 0 black;
+	background: #cfcfd1;
+}
+
+
 /* Slider for APP 
 ==================================*/
 .slider-container{
