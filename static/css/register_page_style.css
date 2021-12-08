@@ -1,0 +1,129 @@
+/* id_username
+
+id_first_name
+
+id_last_name
+
+id_email
+
+id_password1
+
+id_password2
+
+id_city
+
+id_phone
+
+id_information
+
+id_avatar
+
+id_position
+
+class="helptext" */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #232531;
+}
+.box h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+
+}
+p {
+    color: #fff;
+    font-family: sans-serif;
+}
+.box {
+    /* height: 100vh; */
+    width: 40%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #191919;
+    /* text-align: center; */
+    box-shadow:  0 0 5px 0px black;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.box input{
+    border: 0;
+    background: none;
+    display: block;
+    margin-top: 3px;
+    /* margin: 20px auto; */
+    /* text-align: center; */
+    border: 1px solid #3498db;
+    padding: 7px 10px;
+    width: 95%;
+    outline: none;
+    color: #fff;
+    border-radius: 24px;
+    /* transition: 0.25s; */
+}
+.box input:focus{
+    /* width: 280px; */
+    border-color: #2ecc71;
+    box-shadow: 0 0 5px 0 #2ecc71;
+    width: 96%;
+}
+.helptext{
+    display: block;
+    color: #2ecc71;
+    margin-top: 3px;
+}
+#id_first_name,
+#id_username{
+    display: block;
+    left: 50px;
+}
+#id_avatar{
+    border: none;
+    text-align: left;
+}
+#id_avatar:focus{
+    border: none;
+    box-shadow: none;
+}
+li{
+    color: #2ecc71;
+    display: inherit;
+}
+.btn {
+	background-color: #3498db;
+    display: block;
+    text-align: center;
+    padding: 10px 10px;
+    outline: none;
+    color: #fff;
+    transition: 0.25s;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 7px;
+    border: none;
+    text-transform: uppercase;
+	box-shadow: 0 0 5px 0 black;
+	margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn:hover {
+	box-shadow: 0 0 5px 0 #3498db;
+}
+.box img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.errorlist li{
+    display: block;
+    color: brown;
+}

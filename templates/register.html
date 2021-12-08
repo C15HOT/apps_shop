@@ -1,19 +1,21 @@
-{% extends 'base.html' %}
+{% load static %}
 {% block content %}
-
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/register_page_style.css' %}">
 </head>
 <body>
+    
+<form class="box" method="post" enctype="multipart/form-data" autocomplete="off" >
+    <a href="{% url 'main' %}"><img src="{% static 'image/star.png' %}" alt="" style="width: 50px;"></a>
     <h2>Регистрация</h2>
-<form method="post" enctype="multipart/form-data" >
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    <button class="btn" type="submit">Зарегистрироваться</button>
 </form>
 </body>
 </html>

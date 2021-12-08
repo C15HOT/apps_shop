@@ -1,54 +1,80 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ app.title }}</h1>
-
+{% load static %}
+<h1 id="create_title">{{ app.title }}</h1>
+<!-- TODO Добавть версию и системные требования -->
  {% if app.image %}
-    <img width="300" height="300" style="object-fit: cover;" src="{{MEDIA_URL}}{{app.image.url}}">
+ <div class="app-form">
+    
+        <img class="app-detail-img" width="300" height="300"  src="{{MEDIA_URL}}{{app.image.url}}">
+    
  {% else %}
      <p>Скриншотов нет</p>
  {% endif %}
     <br>
+    <div class="app-detail-content">
     Описание: <p>{{ app.description }}</p>
     Дата загрузки: <p>{{ app.created_at }}</p>
+    Версия: <p>{{app.version}}</p>
+    Системные требования: <p>{{app.requirements}}</p>
     Статус: <p>{% if app.flag == True %}
-                Верифицировано
+                <span style="color: #2ecc71;">
+                    Верифицировано
+                </span>
                 {% else %}
-                Неверифицировано
+                <span style="color: brown;">
+                    Неверифицировано
+                </span>
                 {% endif %}</p>
     Автор: <p>{{ app.user }}</p>
     Количество скачиваний: <p>{{ app.download_count }}</p>
     Категория: <p><a href="{% url 'category_detail' app.category.slug %}">{{ app.category }}</a></p>
     Файлы:
 {#    <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>#}
+    <!-- TODO Отрисовать новую кнопку для загрузки -->
+    <!-- TODO добавить доступность ссылки после верификации. Если верифицирован, то качать можно, иначе нет -->
     <a href="{% url 'download' app.slug %}" download>Скачать файл {{ app.file.name }}</a>
-
-
+    </div>
+</div>
 
 
     <!-- Slider -->
-<!-- <div class="slider-container"> -->
-
-
-    <!-- <div class="image-container">    -->
-    {% if files %}
     
-    Скриншоты: 
+    {% if files %}
+    <div class="slider-container">
+    <!-- Скриншоты:  -->
     {% for file in files %}
-        <!-- {% for i in range %} -->
-    <img src="{{MEDIA_URL}}{{file.files.url}}" >
-        <!-- {% endfor %} -->
+         <div class="slide-container">
+            <img class="slide-img" src="{{MEDIA_URL}}{{file.files.url}}" >
+        </div>   
     {% endfor %}
-    {% endif %}
-    <!-- </div> -->
-    <!-- <button id="prev"> &lt; </button> -->
-    <!-- <button id="next"> &gt; </button> -->
-<!-- </div> -->
+    
+        <div class="slide-navigation">
+            <i class="prev-btn">&lt</i>
+            <i class="next-btn">&gt</i>
+        </div>
+        <div class="navigation-visibility">
+    
+    {% for file in files %}
+            <div class="slide-icon">
+            </div>  
+    {% endfor %}
+   
+        </div>
+
+
+    </div> {% endif %}
 <br>
 {% if request.user.is_superuser or request.user == app.user %}
-    <a href="{% url 'edit_app' app.slug %}"><button class="btn">Редактировать</button></a>
+    <div class="button-group">
+      <a href="{% url 'edit_app' app.slug %}"><button class="btn">Редактировать</button></a>
 
-    <a href="{% url 'del_app' app.slug %}"><button class="btn">Удалить</button></a>
+    <a href="{% url 'del_app' app.slug %}"><button class="btn">Удалить</button></a>  
+    </div>
+    
     {% endif %}
 
 
+
+    <script src="{% static 'js/slider.js' %}"></script>
 {% endblock %}
