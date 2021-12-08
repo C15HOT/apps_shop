@@ -649,7 +649,6 @@ position: relative;
 	object-fit: cover;
 }
 .apps-title {
-	
 	color: #fff;
 	margin-top: 15px;
 	max-width: 200px;
@@ -672,22 +671,58 @@ position: relative;
 
 /* APP DETAIL
 ================================= */
+.app-form{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 90%;
+	background: #1b1b24;
+	border-radius: 14px;
+	box-shadow: 0 0 5px 0 black;
+	padding-bottom: 10px;
+}
+.app-img{
+	display: block;
+	margin: 10px;
+}
 .app-detail-img{
+	margin-left: 10px;
+	margin-top: 10px;
+	display: block;
 	object-fit: cover;
 	border-radius: 14px;
 	box-shadow: 0 0 5px 0 black;
 	background: #cfcfd1;
+	float: left;
 }
-
-
+.app-detail-content{
+	display: block;	
+	margin-left: 320px;
+	color: #3498db;
+	font-size: 25px;
+}
+.app-detail-content > p{
+	color: #cfcfd1;
+	font-size: 20px;
+}
+.button-group{
+	display: block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
 /* Slider for APP 
 ==================================*/
 .slider-container{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
 	background-color: #cfcfd1;
 	width: 90%;
 	min-width: 900px;
 	min-height: 800px;
-	margin: 20px;
+	/* margin: 20px; */
 	position: relative;
 	border-radius: 14px;
 	/* padding: 20px; */
