@@ -116,7 +116,9 @@ form > p label{
 	font-family: sans-serif;
 	font-size: 20px;
 }
-
+#id_content, #id_annotation{
+	resize: none;
+}
 #id_title, 
 #id_content, 
 #id_annotation, 
