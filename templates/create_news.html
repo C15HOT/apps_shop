@@ -4,7 +4,7 @@
     
     
         <h2 id="create_title">Создание новости</h2>
-  
+      
       <form class="create-form" method="post" action="{% url 'create_news' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ news_form.as_p}}
