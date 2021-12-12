@@ -1,6 +1,11 @@
 .body{
 	font-family: sans-serif;
-	background-color: #232531;
+	/* background-color: #232531; */
+	background:
+	linear-gradient(217deg, rgba(8, 39, 18, 0.9),rgba(255,0,0,0) 70.71%),
+	linear-gradient(127deg, rgba(37, 3, 3, 0.9),rgba(0,255,0,0) 70.71%),
+	linear-gradient(336deg, rgba(7, 6, 68, 0.9),rgba(0,0,255,0) 70.71%);
+	background-blend-mode: darken;
 	color: #cfcfd1;
 	margin: 0;
 	position: relative;
@@ -105,8 +110,9 @@
 	width: 60%;
 	margin-left: auto;
 	margin-right: auto;
-	background: rgba(0, 0, 0, .65) url("/static/image/img.jpg");
+	background: rgba(0, 0, 0, .65) url("/static/image/img2.jpg");
 	background-blend-mode: darken;
+	background-size: cover;
 }
 form > p{
 	display: block;
