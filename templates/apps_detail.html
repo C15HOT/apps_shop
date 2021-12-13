@@ -6,7 +6,7 @@
  {% if app.image %}
  <div class="app-form">
     
-        <img class="app-detail-img" width="300" height="300"  src="{{MEDIA_URL}}{{app.image.url}}">
+        <img class="app-detail-img gradient" width="300" height="300"  src="{{MEDIA_URL}}{{app.image.url}}">
     
  {% else %}
      <p>Скриншотов нет</p>
@@ -33,7 +33,9 @@
 {#    <a href="{{MEDIA_URL}}{{app.file.url}}" download>Скачать файл {{ app.file.name }}</a>#}
     <!-- TODO Отрисовать новую кнопку для загрузки -->
     <!-- TODO добавить доступность ссылки после верификации. Если верифицирован, то качать можно, иначе нет -->
-    <a href="{% url 'download' app.slug %}" download>Скачать файл {{ app.file.name }}</a>
+    
+        <a class="btn-download" href="{% url 'download' app.slug %}" download>Скачать<img height="40px" width="40px" src="{% static 'image\download.png' %}" alt="Скачать файл"></a>
+
     </div>
 </div>
 
@@ -50,8 +52,8 @@
     {% endfor %}
     
         <div class="slide-navigation">
-            <i class="prev-btn">&lt</i>
-            <i class="next-btn">&gt</i>
+            <i class="prev-btn"><img height="45px" width="45px" src="{% static 'image\btn-left-1.png' %}" alt=""></i>
+            <i class="next-btn"><img height="45px" width="45px" src="{% static 'image\btn-right-1.png' %}" alt=""></i>
         </div>
         <div class="navigation-visibility">
     
