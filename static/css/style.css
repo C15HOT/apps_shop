@@ -632,6 +632,39 @@ position: relative;
 	margin-bottom: auto;
 	text-decoration: none;
 }
+
+/* NEW PROFILE CARD
+==================================== */
+.new-profile-card-detail{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 550px;
+	height: auto;
+	border-radius: 15px;
+	box-shadow: 0  0 5px 0 black;
+	padding: 10px;
+	
+
+}
+#new-profile-avatar{
+	float: left;
+	margin: 10px;;
+	object-fit: cover;
+	border-radius: 50%;
+	box-shadow: 0 0 5px 0 black;
+}
+.new-profile-card-detail>img{
+	object-fit: cover;
+	font-size: 20px;
+}
+#new-profile-name{
+	color: #3498db;
+	font-size: 25px;
+	text-align: center;
+}
+
+
 /* App list 
 =======================================*/
 
