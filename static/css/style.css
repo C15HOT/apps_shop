@@ -649,19 +649,38 @@ position: relative;
 	max-width: 200px;
 	text-align: center;
 }
-.apps-list-category{
+#category_title{
 	display: block;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 18px;
+	color: #1b1b24;
+
+}
+.apps-list-category{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	height: 100%;
-	width: 100vh;
 }
 .apps-list-category>a{
-	color: #cfcfd1;
+	color: #fff;
 	text-decoration: none;
+	background: #3498db44;
+	border-radius: 5px;
+	padding: 2px 5px 2px 5px;
+	margin: 5px;
+	box-shadow: 0 0 5px 0 black;
+	transition-duration: 0.2s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
 }
 
 .apps-list-category>a:hover {
 	color: #fff;
+	background: #3498db;
 	text-decoration: none;
+	box-shadow: 0 0 5px 0 #3498db;
 }
 
 /* APP DETAIL
