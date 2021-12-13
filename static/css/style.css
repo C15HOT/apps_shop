@@ -562,8 +562,76 @@ position: relative;
 
 /* NEW USER CARD
 =========================================== */
+.new-main-profile-list{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-decoration: none;
+}
 
+.new-profile-card{
+	display: block;
+	height: 230px;
+	width: 200px;
+	background: #232531;
+	color: #3498db;
+	border-radius: 14px;
+	text-align: center;
+	box-shadow: 0 0 5px 0 black;
+	margin: 7px;
+	text-decoration: none;
+	transition-duration: 0.2s;
+	-webkit-transition-property: box-shadow, transform;
+	transition-property: box-shadow, transform;
+	cursor: pointer;
+}
+.new-profile-card:hover{
+	text-decoration: none;
+	box-shadow: 0 0 5px 0 #3498db;
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
+}
+.new-profile-avatar{
+	position: relative;
+	border-radius: 50%;
+	
+}
+.new-profile-avatar img{
+	position:relative;
+	margin-top: 10px;
+	border-radius: 50%;
+	box-shadow: 0 0 5px 0 black;
+	object-fit: cover;
 
+}
+
+.new-profile-name{
+	font-size: 18px;
+}
+.new-profile-position{
+	color: #818186;
+	font-size: 14px;
+}
+
+.new-profile-buttons{
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+	background: #818186;
+	width: 100%;
+	height: 45px;
+	border-bottom-left-radius: 14px;
+	border-bottom-right-radius: 14px;
+	color: #cfcfd1;
+	align-items: center;
+}
+
+.new-profile-buttons a{
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+	text-decoration: none;
+}
 /* App list 
 =======================================*/
 
