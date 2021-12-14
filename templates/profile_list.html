@@ -2,10 +2,10 @@
 {% block content %}
 
 {% if profile_list %}
-
+<div class="new-main-profile-list">
      {% for profile in profile_list %}
      
-      <div class="user-card">
+      <!-- <div class="user-card">
          <div class="content">
             <div class="avatar">
                <img width="90" height="90" src="{{MEDIA_URL}}{{profile.avatar.url}}">
@@ -21,7 +21,29 @@
                   <a href="{% url 'profile_detail' profile.slug %}">Просмотреть</a>
             </div>
          </div>
+      </div> -->
+
+      <!-- New profile list -->
+      <a href="{% url 'profile_detail' profile.slug %}">
+
+      <div class="new-profile-card gradient">
+            <div class="new-profile-avatar">
+                  <img width="100" height="100" src="{{MEDIA_URL}}{{profile.avatar.url}}" alt="">
+            </div>
+            
+                  <div class="new-profile-name">
+             {{ profile.user.first_name }} {{ profile.user.last_name  }}
+                  </div>
+                  <div class="new-profile-position">
+                  {{ profile.position }}
+                  </div>
+            
+            
+            <!-- <div class="new-profile-buttons">
+                  <a href="{% url 'profile_detail' profile.slug %}">Просмотреть</a>
+            </div> -->
       </div>
+      </a>
 
 
 <!-- 
@@ -32,7 +54,7 @@
         <a class="list_news__link" href="{% url 'profile_detail' profile.slug %}">{{ profile.user.username }}</a>
       -->
      {% endfor %}
-
+</div>
 {% endif %}
 
 {% endblock %}

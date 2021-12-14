@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<div class="profile-card">
+<!-- <div class="profile-card">
     <div class="profile-avatar">
         <h1>{{ profile.user.username }}</h1>
         {% if profile.avatar %}
@@ -33,7 +33,40 @@
         </div>
        
     </div>
+</div> -->
+<div class="new-profile-card-detail gradient">
+    {% if profile.avatar %}
+    <img id="new-profile-avatar" width="250" height="250" src="{{MEDIA_URL}}{{profile.avatar.url}}">
+    {% endif %}
+    <span id="new-profile-name">
+{{ profile.user.first_name }}
+    {{ profile.user.last_name  }}
+    </span>
+
+<p>
+   <img height="20" width="20" src="{% static 'image/mail.png' %}" alt="">   {{ profile.email }} 
+</p>
+<p>
+    <img height="20" width="20" src="{% static 'image/location.png' %}" alt="">   {{ profile.city }}
+</p>
+<p>
+    <img height="20" width="20" src="{% static 'image/tel.png' %}" alt="">   {{ profile.phone }}
+</p>
+<p>
+    <img height="20" width="20" src="{% static 'image/inf.png' %}" alt="">   {{ profile.information }}
+</p>
+Должность: <p>{{ profile.position }}</p>
+
+
+
 </div>
+
+
+{% ifequal request.user profile.user %}
+    <a href="{% url 'edit_profile' profile.slug %}"><button class="btn">Редактировать</button></a>
+{% endifequal %}
+
+
 
 
 <h1>{{ profile.user.username }}</h1>
@@ -52,7 +85,7 @@
 
 
 {% ifequal request.user profile.user %}
-    <a href="{% url 'edit_profile' profile.slug %}"><button>Редактировать</button></a>
+    <a href="{% url 'edit_profile' profile.slug %}"><button class="btn">Редактировать</button></a>
 {% endifequal %}
 
 

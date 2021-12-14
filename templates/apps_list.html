@@ -36,7 +36,7 @@
 {% endif %}
 </div>
 {% if categories %}
-    <h2 style="font-size: 18px;">Категории:</h2>
+    <h2 id="category_title" style="font-size: 18px;">Категории:</h2>
      <div class="apps-list-category">
         {% for category in categories %}
         <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
