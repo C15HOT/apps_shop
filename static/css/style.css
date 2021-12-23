@@ -5,6 +5,8 @@
 	linear-gradient(217deg, rgba(8, 39, 18, 0.9),rgba(255,0,0,0) 70.71%),
 	linear-gradient(127deg, rgba(37, 3, 3, 0.9),rgba(0,255,0,0) 70.71%),
 	linear-gradient(336deg, rgba(7, 6, 68, 0.9),rgba(0,0,255,0) 70.71%);
+	animation: body 30s infinite linear;
+	background-size: 500%;
 	/* background-blend-mode: darken; */
 	color: #cfcfd1;
 	margin: 0;
@@ -12,7 +14,18 @@
 	padding-bottom: 150px;
 	min-height: 100vh;
 }
+@keyframes body{
+	0% {
+		background-position: 80% 0%;
+	}
+	50% {
+		background-position: 20% 100%;
+	}
 
+	100% {
+		background-position: 80% 0%;
+	}
+}
 *, *:before,*:after {
 	box-sizing: border-box;
 }
@@ -63,6 +76,8 @@
 }
 
 .nav__link {
+	margin-top: auto;
+	margin-bottom: auto;
 	margin-left: 20px;
 	color: #fff;
 	text-decoration: none;
@@ -86,6 +101,7 @@
 	border-radius: 50%;
 	background: none;
 	margin-left: 10px;
+	border: 1px solid #fff;
 }
 
 .img_user_menu:hover{
@@ -94,15 +110,18 @@
 }
 .submenu-container{
 	border-radius: 15px;
-	background: #232531;
+	/* background: #232531 ; */
+	/* Фитр работает на хроме хорошо,  */
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.1);
 	position: absolute;
 	/* margin: 30px; */
 	top: 35px;
-	right: -60px;
+	right: -75px;
 	display: none;
-	padding-right: 20px;
+	padding-right: 24px;
 	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-bottom: 15px;
 }
 nav ul{
 	padding: 0;

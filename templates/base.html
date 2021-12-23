@@ -24,12 +24,12 @@
                     <b>Союз программистов </b>                  
                     </div>
                </div>
-               <!-- <nav class="nav">
+                <nav class="nav">
                     <a class="nav__link" href="{% url 'main' %}">Главная</a>
                     <a class="nav__link" href="{% url 'apps_list' %}">Программы</a>
                     <a class="nav__link" href="{% url 'information' %}">Информация</a>
                     <a class="nav__link" href="{% url 'about' %}">О нас</a>
-                    
+                   <!-- 
                    {% if request.user.is_authenticated %}
                    
                         <a class="nav__link" href="{% url 'profiles' %}">Пользователи</a>
@@ -40,14 +40,15 @@
                         <a href="{% url 'login' %}" class="nav__link">Войти</a>
                         <a href="{% url 'register' %}" class="nav__link">Зарегистрироваться</a>
                    {% endif %}
-               </nav> -->
+               </nav> 
                <nav class="nav">
                    <ul class="menu">
                        <li><a class="nav__link" href="{% url 'main' %}">Главная</a></li>
                        <li><a class="nav__link" href="{% url 'apps_list' %}">Программы</a></li>
                        <li><a class="nav__link" href="{% url 'information' %}">Информация</a></li>
-                       <li><a class="nav__link" href="{% url 'about' %}">О нас</a></li>
-                       <li><img class="img_user_menu" width="35px" src="{% static 'image/user.png' %}" alt="">
+                       <li><a class="nav__link" href="{% url 'about' %}">О нас</a></li>-->
+                       <ul class="menu">
+                       <li><img class="img_user_menu" width="35px" src="{% static 'image/user_1.png' %}" alt="">
                        <div class="submenu-container">
                             <ul class="submenu">
                             {% if request.user.is_authenticated %}
