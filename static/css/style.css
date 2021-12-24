@@ -5,6 +5,8 @@
 	linear-gradient(217deg, rgba(8, 39, 18, 0.9),rgba(255,0,0,0) 70.71%),
 	linear-gradient(127deg, rgba(37, 3, 3, 0.9),rgba(0,255,0,0) 70.71%),
 	linear-gradient(336deg, rgba(7, 6, 68, 0.9),rgba(0,0,255,0) 70.71%);
+	animation: body 30s infinite linear;
+	background-size: 500%;
 	/* background-blend-mode: darken; */
 	color: #cfcfd1;
 	margin: 0;
@@ -12,7 +14,18 @@
 	padding-bottom: 150px;
 	min-height: 100vh;
 }
+@keyframes body{
+	0% {
+		background-position: 80% 0%;
+	}
+	50% {
+		background-position: 20% 100%;
+	}
 
+	100% {
+		background-position: 80% 0%;
+	}
+}
 *, *:before,*:after {
 	box-sizing: border-box;
 }
@@ -55,27 +68,6 @@
 /* NAV 
 =============== */
 
-/* Animation blink text */
-/* #blink {
-	animation: blink 2s linear infinite;
-	animation-duration: 2s;
-	animation-timing-function: linear;
-	animation-delay: 0s;
-	animation-iteration-count: infinite;
-	animation-direction: normal;
-	animation-fill-mode: none;
-	animation-play-state: running;
-	animation-name: blink;
-	font-size: 20px;
-
-}
-
-@keyframes blink {
-	
-	50% {color:rgb(255, 255, 255) };
-	51% {color:rgba(255, 255, 255, 0);}
-	100% {color:rgba(255, 255, 255, 0);}
-} */
 .nav {
 	display: flex;
 	font-size: 13px;
@@ -84,6 +76,8 @@
 }
 
 .nav__link {
+	margin-top: auto;
+	margin-bottom: auto;
 	margin-left: 20px;
 	color: #fff;
 	text-decoration: none;
@@ -102,8 +96,99 @@
 	 height: 30px;
 	 border-radius: 15px;
 	 background-color: #fff;
+}
+.img_user_menu{
+	border-radius: 50%;
+	background: none;
+	margin-left: 10px;
+	border: 1px solid #fff;
+}
+
+.img_user_menu:hover{
+	cursor: pointer;
+	border-radius: 50%;
+}
+.submenu-container{
+	border-radius: 15px;
+	/* background: #232531 ; */
+	/* Фитр работает на хроме хорошо,  */
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.1);
+	position: absolute;
+	/* margin: 30px; */
+	top: 35px;
+	right: -75px;
+	display: none;
+	padding-right: 24px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+}
+nav ul{
+	padding: 0;
+	margin: 0;
+	float: right;
+	margin-right: 50px;
+	align-items: center;
+}
+nav ul li{
+	display: block;
+	top: 5px;
+	
+	list-style: none;
+	float: left;
+}
+.menu{
+	position: relative;
+	list-style: none;
+	direction: inline-block;
+	border-radius: 15px;
+}
+
+/* nav ul li a{
+	display: block;
+	padding: 0 15px;
+	color: #cfcfd1;
+	text-decoration: none;
+	line-height: 60px;
+	font-size: 20px;
+	background: #232531;
+} */
+
+.submenu-container>ul{
+	margin-left: auto;
+	margin-right: auto;
+}
+nav ul li:hover > .submenu-container{
+	position: absolute;
+	z-index: 999;
+	display: block;
+	list-style: none;
+	border-radius: 15px;
+	box-shadow: 0 0 5px 0 black;
+	/* margin-right: 60px; */
+}
+
+nav ul ul li{
+	border-radius: 15px;
+	text-align: center;
+	width: 170px;
+	float: none;
+	display: list-item;
+	position: relative;
+	list-style: none;
+}
+
+nav ul ul li a{
+	background: none;
+	padding-top: 5px;
+}
+
+nav ul ul li a:hover{
+	color: #fff;
 
 }
+
+
 /* Create news
 ======================== */
 #create_title{
